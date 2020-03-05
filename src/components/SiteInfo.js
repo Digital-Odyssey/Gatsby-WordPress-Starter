@@ -34,7 +34,6 @@ const SiteInfo = () => (
         allWordpressWpLogo {
           edges {
             node {
-              wordpress_id
               url {
                 id
                 source_url

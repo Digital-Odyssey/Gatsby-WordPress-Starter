@@ -57,4 +57,4 @@ add_action('init', 'create_portfolio_post_type');
 
 9. Under Custom Fields in WordPress create a new field groupd labelled "Portfolio" and add a new field lablled "portfolio_url". Then under "Rules" create a post type rule which is equal to "Portfolio"
 
-10. Run "gatsby develop" in your terminal from your preferred IDE to start gatsby on localhost:8000
+10. Run "gatsby develop" in your terminal from your preferred IDE to start gatsby on localhost:8000.

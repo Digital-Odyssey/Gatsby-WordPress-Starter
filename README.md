@@ -11,11 +11,14 @@ How to use:
 3.  Update the "baseUrl" parameter in gatsby-config.js (on line 38) with the path to your local WordPress installation.
 
 4.  Install the following plugins on your local WordPress installation:
-    -- Advanced Custom Fields
-    -- ACF to REST API
-    -- WP REST API Menus
-    -- WP REST API logo
-    -- WP REST API favicon
+
+```
+    - Advanced Custom Fields
+    - ACF to REST API
+    - WP REST API Menus
+    - WP REST API logo
+    - WP REST API favicon
+```
 
 5.  Populate some pages and posts and create a menu in WordPress. The menu does not need to be assigned to a display location since it is being parsed from the REST API with GraphQL.
 

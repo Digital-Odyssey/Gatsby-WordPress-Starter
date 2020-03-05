@@ -1,6 +1,6 @@
 # Gatsby Wordpress Starter
 
-A starting build for a headless WordPress setup with Gatsby. Includes support for a custom post type and a custom blog template with paging. This starting build was taken from the Udemy course called "Gatsby JS: Build static sites with React WordPress and GraphQL" by Tom Phillips. The paging system was bit incomplete so i made a few improvements to that. I will also be adding support for comments in a future update.
+A starting build for a headless WordPress setup with Gatsby. Includes support for a custom post type and a custom blog template with paging. This starting build was taken from the Udemy course called "Gatsby JS: Build static sites with React WordPress and GraphQL" by Tom Phillips. The paging system was a bit incomplete so i made a few improvements to that. I will also be adding support for comments in a future update.
 
 ## How to use:
 

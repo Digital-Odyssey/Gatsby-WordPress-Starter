@@ -1,8 +1,8 @@
-# gatsby-wordpress-starter
+# Gatsby Wordpress Starter
 
 A starting build for a headless WordPress setup with Gatsby. Includes support for a custom post type and a custom blog template with paging.
 
-How to use:
+## How to use:
 
 1.  Clone the repo to your local drive
 

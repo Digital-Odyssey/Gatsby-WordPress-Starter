@@ -24,7 +24,7 @@ A starting build for a headless WordPress setup with Gatsby. Includes support fo
 
 6.  Upload a favicon and site logo in the theme customizer area under Site Identity.
 
-7.  Create a custom post type on your local WordPress installation and call it portfolio or you can copy and paste the code below in your functions.php file:
+7.  Create a custom post type on your local WordPress installation and call it portfolio (be sure to set the "show_in_rest" parameter to true to expose the CPT to the REST API) or you can copy and paste the code below in your functions.php file:
 
 ```
 add_theme_support( 'custom-logo' );
@@ -32,19 +32,22 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 
 function create_portfolio_post_type() {
-register_post_type(
-'portfolio',
-array(
-'labels' => array(
-'name' => **('Portfolio'),
-'singular_name' => **('Portfolio')
-),
-'public' => true,
-'show_in_admin_bar' => true,
-'show_in_rest' => true
-)
-);
-add_post_type_support('portfolio', array('thumbnail', 'excerpt'));
+
+    register_post_type(
+                        'portfolio',
+                            array(
+                            'labels' => array(
+                            'name' => **('Portfolio'),
+                            'singular_name' => **('Portfolio')
+                            ),
+    'public' => true,
+    'show_in_admin_bar' => true,
+    'show_in_rest' => true
+    )
+    );
+
+    add_post_type_support('portfolio', array('thumbnail', 'excerpt'));
+
 }
 
 add_action('init', 'create_portfolio_post_type');

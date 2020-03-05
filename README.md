@@ -1,6 +1,6 @@
 # Gatsby Wordpress Starter
 
-A starting build for a headless WordPress setup with Gatsby. Includes support for a custom post type and a custom blog template with paging. Support for comments will be added in a future update.
+A starting build for a headless WordPress setup with Gatsby. Includes support for a custom post type and a custom blog template with paging. This starting build was taken from the Udemy course called "Gatsby JS: Build static sites with React WordPress and GraphQL" by Tom Phillips. The paging system was bit incomplete so i made a few improvements to that. I will also be adding support for comments in a future update.
 
 ## How to use:
 
@@ -24,7 +24,7 @@ A starting build for a headless WordPress setup with Gatsby. Includes support fo
 
 6.  Upload a favicon and site logo in the theme customizer area under Site Identity.
 
-7.  Create a custom post type on your local WordPress installation and call it portfolio (be sure to set the "show_in_rest" parameter to true to expose the CPT to the REST API) or you can copy and paste the code below in your functions.php file:
+7.  Create a custom post type on your local WordPress installation and call it portfolio (be sure to set the "show_in_rest" parameter to true to expose the CPT to the REST API) or you can copy and paste the code below into your functions.php file:
 
 ```
 add_theme_support( 'custom-logo' );

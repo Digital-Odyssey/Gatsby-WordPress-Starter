@@ -6,10 +6,11 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title={"Home"} />
-      <p>This is the main homepage.</p>
+      <p>Gatsby starter build for WordPress.</p>
       <p>
-        This page is not hooked up to WordPress - please reference index-WP.js
-        or page.js to connect this page to WordPress.
+        Be sure to checkout the portfolio page, which is a custom post type and
+        the blog page which features a full fledged pagination system running in
+        React.
       </p>
     </Layout>
   )

@@ -1,31 +1,8 @@
 import React from "react"
 import Layout from "../components/layout"
 import { Link } from "gatsby"
-import SEO from "../components/seo"
+import { SEO, Pagination } from "../components"
 import styled from "styled-components"
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`
-
-const PageNumberWrapper = styled.div`
-  display: flex;
-  background: ${props => (props.isCurrentPage ? "red" : "white")};
-  color: white;
-`
-
-const PageNumber = styled(Link)`
-  padding: 8px 12px;
-  text-decoration: none;
-  border: 1px solid #eee;
-  font-size: 10px;
-  color: ${props => (props.isCurrentPage ? "white" : "black")};
-  transition: all 0.3s;
-  :hover {
-    background: red;
-  }
-`
 
 const PostsWrapper = styled.div`
   display: flex;
@@ -67,61 +44,6 @@ export default ({ pageContext }) => (
         </PostDetails>
       ))}
     </PostsWrapper>
-
-    <Pagination>
-      {pageContext.currentPage > 1 ? (
-        <PageNumber to={`/blog/`}>{"<<"}</PageNumber>
-      ) : (
-        ""
-      )}
-      {pageContext.currentPage > 1 ? (
-        <PageNumber
-          to={
-            pageContext.currentPage === 2
-              ? "/blog"
-              : `/blog/${pageContext.currentPage - 1}`
-          }
-        >
-          {"<"}
-        </PageNumber>
-      ) : (
-        ""
-      )}
-      {Array.from({ length: pageContext.numberOfPages }).map((page, index) => (
-        <PageNumberWrapper
-          key={index}
-          isCurrentPage={index + 1 === pageContext.currentPage}
-        >
-          {index + 1 > pageContext.currentPage - pageContext.pagingDisplay &&
-            index + 1 < pageContext.currentPage + pageContext.pagingDisplay && (
-              <PageNumber
-                key={index}
-                to={index === 0 ? "/blog" : `/blog/${index + 1}`}
-                className={`page-number${
-                  index === pageContext.currentPage - 1 ? " white" : ""
-                }`}
-              >
-                {index + 1}
-              </PageNumber>
-            )}
-        </PageNumberWrapper>
-      ))}
-
-      {pageContext.currentPage < pageContext.numberOfPages ? (
-        <PageNumber to={`/blog/${pageContext.currentPage + 1}`}>
-          {">"}
-        </PageNumber>
-      ) : (
-        ""
-      )}
-
-      {pageContext.currentPage < pageContext.numberOfPages ? (
-        <PageNumber to={`/blog/${pageContext.numberOfPages}`}>
-          {">>"}
-        </PageNumber>
-      ) : (
-        ""
-      )}
-    </Pagination>
+    <Pagination pageContext={pageContext} path={"/blog"} />
   </Layout>
 )

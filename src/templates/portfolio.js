@@ -16,7 +16,7 @@ const BodyContent = styled.div`
 
 export default ({ pageContext }) => (
   <Layout>
-    <SEO />
+    <SEO title={pageContext.title} />
     <h1>{pageContext.title}</h1>
     <div>
       <FeaturedImage src={pageContext.featured_media.source_url} />

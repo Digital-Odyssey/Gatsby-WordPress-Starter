@@ -12,6 +12,7 @@ const IndexPage = () => {
         the blog page which features a full fledged pagination system running in
         React.
       </p>
+      <p>Comment system and hero slider will be coming soon!</p>
     </Layout>
   )
 }

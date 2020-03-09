@@ -1,7 +1,8 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../../components/layout"
 import { Link } from "gatsby"
-import { SEO, Pagination } from "../components"
+import { SEO } from "../../components"
+import { Pagination } from "../../components/pagination"
 import styled from "styled-components"
 
 const PostsWrapper = styled.div`

@@ -85,7 +85,7 @@ exports.createPages = async ({ graphql, actions }) => {
   //-----WP PAGES
   const pageTemplate = path.resolve(`./src/templates/page.js`)
   const portfolioUnderContentTemplate = path.resolve(
-    "./src/templates/portfolioUnderContent.js"
+    "./src/templates/portfolio/portfolioUnderContent.js"
   )
   // We want to create a detailed page for each page node.
   // The path field contains the relative original WordPress link
@@ -111,7 +111,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   //-----WP POSTS
-  const postTemplate = path.resolve(`./src/templates/blogPostList.js`)
+  const postTemplate = path.resolve(`./src/templates/blog/blogPostList.js`)
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
   // and we use it for the slug to preserve url structure.
@@ -149,7 +149,9 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   //-----PORTFOLIO POSTS
-  const portfolioTemplate = path.resolve(`./src/templates/portfolio.js`)
+  const portfolioTemplate = path.resolve(
+    `./src/templates/portfolio/portfolio.js`
+  )
 
   allWordpressWpPortfolio.edges.forEach(edge => {
     createPage({

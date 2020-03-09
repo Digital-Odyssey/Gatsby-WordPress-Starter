@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import styled from "styled-components"
-import SiteLogo from "../components/SiteLogo"
+import { SiteLogo } from "./"
 
 const SiteInfoWrapper = styled.div`
   flex-grow: 1;
@@ -11,11 +11,6 @@ const SiteInfoWrapper = styled.div`
 
 const SiteTitle = styled.div`
   font-weight: bold;
-`
-
-const MainLogo = styled.img`
-  max-width: 50%;
-  display: inline-block;
 `
 
 const SiteInfo = () => (

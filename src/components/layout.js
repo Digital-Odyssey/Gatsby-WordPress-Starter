@@ -7,7 +7,7 @@
 
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import MainMenu from "./MainMenu"
+import { MainMenu } from "./menu"
 import styled, { createGlobalStyle } from "styled-components"
 import Helmet from "react-helmet"
 

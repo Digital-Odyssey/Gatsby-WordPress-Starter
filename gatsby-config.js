@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby WP Starter`,
+    description: `This starter project extends off the base Gatsby starter with additional features ready for production.`,
+    author: `@pulsarmedia`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -126,7 +126,7 @@ module.exports = {
           "/*/*/favicon",
         ],
         // Blacklisted routes using glob patterns
-        excludedRoutes: [],
+        excludedRoutes: ["wp/v2/users/**", "wp/v2/settings*", "wp/v2/themes*"],
         // Set this to keep media sizes.
         // This option is particularly useful in case you need access to
         // URLs for thumbnails, or any other media detail.
@@ -161,5 +161,16 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Open Sans`,
+            variants: [`400`, `600`, `700`],
+          },
+        ],
+      },
+    },
   ],
 }

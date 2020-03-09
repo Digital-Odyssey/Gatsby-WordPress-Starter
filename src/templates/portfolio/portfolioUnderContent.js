@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../components/layout"
-import PortfolioItems from "../components/PortfolioItems"
-import SEO from "../components/seo"
+import Layout from "../../components/layout"
+import { PortfolioItems } from "../../components/portfolio"
+import SEO from "../../components/seo"
 
 export default ({ pageContext }) => (
   <Layout>

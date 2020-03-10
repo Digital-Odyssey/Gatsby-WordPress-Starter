@@ -14,8 +14,14 @@ const PostDetails = styled.div`
   margin: 0 0 40px;
   display: block;
 `
+const CatLink = styled(Link)`
+  text-decoration: none;
+  color: blue;
+`
+
 const BlogPostList = ({ pageContext }) => {
   console.log(pageContext.posts[0].node.categories)
+
   return (
     <Layout>
       <SEO title="Blog" />
@@ -24,7 +30,12 @@ const BlogPostList = ({ pageContext }) => {
           <PostDetails key={post.node.wordpress_id}>
             <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} />
             <small className="post-date">{post.node.date}</small>
-            <p>Posted in: {post.node.categories[0].name}</p>
+            <p>
+              Posted in:{" "}
+              {post.node.categories.map(element => (
+                <CatLink to={element.slug}>{element.name} </CatLink>
+              ))}
+            </p>
             <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
             <div>
               <Link className="read-more" to={`/post/${post.node.slug}`}>

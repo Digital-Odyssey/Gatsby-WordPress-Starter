@@ -19,9 +19,7 @@ const CatLink = styled(Link)`
   color: blue;
 `
 
-const BlogPostList = ({ pageContext }) => {
-  console.log(pageContext.posts[0].node.categories)
-
+const BlogPosts = ({ pageContext }) => {
   return (
     <Layout>
       <SEO title="Blog" />
@@ -32,8 +30,10 @@ const BlogPostList = ({ pageContext }) => {
             <small className="post-date">{post.node.date}</small>
             <p>
               Posted in:{" "}
-              {post.node.categories.map(element => (
-                <CatLink to={element.slug}>{element.name} </CatLink>
+              {post.node.categories.map((element, index) => (
+                <CatLink key={index} to={`/archive/${element.slug}`}>
+                  {element.name}{" "}
+                </CatLink>
               ))}
             </p>
             <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
@@ -50,4 +50,4 @@ const BlogPostList = ({ pageContext }) => {
   )
 }
 
-export default BlogPostList
+export default BlogPosts

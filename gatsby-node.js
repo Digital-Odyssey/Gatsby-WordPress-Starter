@@ -48,10 +48,32 @@ exports.createPages = async ({ graphql, actions }) => {
             guid
             date(formatString: "Do MMM YYYY HH:mm")
             categories {
+              id
+              name
+              slug
+            }
+            tags {
+              id
               name
               slug
             }
           }
+        }
+      }
+      allWordpressCategory {
+        nodes {
+          id
+          name
+          slug
+          count
+        }
+      }
+      allWordpressTag {
+        nodes {
+          id
+          name
+          path
+          slug
         }
       }
       allWordpressWpPortfolio {
@@ -84,6 +106,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const {
     allWordpressPage,
     allWordpressPost,
+    allWordpressCategory,
+    allWordpressTag,
     allWordpressWpPortfolio,
   } = result.data
 
@@ -116,7 +140,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   //-----WP POSTS
-  const postTemplate = path.resolve(`./src/templates/blog/blogPostList.js`)
+  const postTemplate = path.resolve(`./src/templates/blog/blogPosts.js`)
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
   // and we use it for the slug to preserve url structure.
@@ -140,6 +164,31 @@ exports.createPages = async ({ graphql, actions }) => {
         currentPage: index + 1,
       },
     })
+  })
+
+  //----WP ARCHIVES
+  const archiveTemplate = path.resolve(`./src/templates/blog/archive.js`)
+
+  allWordpressCategory.nodes.forEach(catNode => {
+    //filter out posts that belongs to the current category
+    const filteredPosts = allWordpressPost.edges.filter(
+      //destructure categories
+      ({ node: { categories } }) => categories.some(el => el.id === catNode.id)
+    )
+    //some categories may be emtpy so dont show them
+    if (filteredPosts.length > 0) {
+      createPage({
+        path: `/archive/${catNode.slug}`,
+        component: slash(archiveTemplate),
+        context: {
+          catId: catNode.id,
+          catName: catNode.name,
+          catSlug: catNode.slug,
+          catCount: catNode.count,
+          categories: allWordpressCategory.edges,
+        },
+      })
+    }
   })
 
   //-----WP SINGLE POST

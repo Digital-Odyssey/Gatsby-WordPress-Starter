@@ -45,6 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             content
             excerpt
+            guid
             date(formatString: "Do MMM YYYY HH:mm")
           }
         }
@@ -140,11 +141,17 @@ exports.createPages = async ({ graphql, actions }) => {
   //-----WP SINGLE POST
   const singlePostTemplate = path.resolve(`./src/templates/post.js`)
 
-  allWordpressPost.edges.forEach(edge => {
+  posts.forEach(({ node }, index) => {
     createPage({
-      path: `/post/${edge.node.slug}`,
+      path: `/post/${node.slug}`,
       component: slash(singlePostTemplate),
-      context: edge.node, //edge.node contains all the data for our post
+      context: {
+        title: node.title,
+        content: node.content,
+        pathSlug: node.slug,
+        prev: index === 0 ? null : posts[index - 1].node,
+        next: index === posts.length - 1 ? null : posts[index + 1].node,
+      },
     })
   })
 

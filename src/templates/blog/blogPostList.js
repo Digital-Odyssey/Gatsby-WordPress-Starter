@@ -15,21 +15,6 @@ const PostDetails = styled.div`
   display: block;
 `
 
-const ReadMoreBtn = styled(Link)`
-  background-color: blue;
-  color: white;
-  border-radius: 4px;
-  padding: 8px 12px;
-  text-decoration: none;
-  font-size: 13px;
-  transition: all 0.3s;
-  margin: 10px 0 0;
-  display: inline-block;
-  :hover {
-    background-color: red;
-  }
-`
-
 export default ({ pageContext }) => (
   <Layout>
     <SEO title="Blog" />
@@ -40,7 +25,9 @@ export default ({ pageContext }) => (
           <small className="post-date">{post.node.date}</small>
           <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
           <div>
-            <ReadMoreBtn to={`/post/${post.node.slug}`}>Read More</ReadMoreBtn>
+            <Link className="read-more" to={`/post/${post.node.slug}`}>
+              Read More
+            </Link>
           </div>
         </PostDetails>
       ))}

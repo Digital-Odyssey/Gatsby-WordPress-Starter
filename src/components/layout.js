@@ -8,6 +8,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { MainMenu } from "./menu"
+import { Footer } from "./"
 import styled from "styled-components"
 import Helmet from "react-helmet"
 import "./styles/layout.scss"
@@ -44,7 +45,10 @@ const Layout = ({ children }) => {
             />
           </Helmet>
           <MainMenu />
-          <LayoutWrapper>{children}</LayoutWrapper>
+          <LayoutWrapper>
+            {children}
+            <Footer />
+          </LayoutWrapper>
         </div>
       )}
     />

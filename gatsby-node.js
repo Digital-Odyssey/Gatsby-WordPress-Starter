@@ -47,6 +47,10 @@ exports.createPages = async ({ graphql, actions }) => {
             excerpt
             guid
             date(formatString: "Do MMM YYYY HH:mm")
+            categories {
+              name
+              slug
+            }
           }
         }
       }

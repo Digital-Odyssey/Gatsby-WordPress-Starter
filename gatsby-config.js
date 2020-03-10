@@ -120,7 +120,6 @@ module.exports = {
           "**/media",
           "**/tags",
           "**/taxonomies",
-          "**/users",
           "**/menus",
           "**/portfolio",
           "/*/*/logo",

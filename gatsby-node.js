@@ -51,11 +51,6 @@ exports.createPages = async ({ graphql, actions }) => {
               name
               slug
             }
-            tags {
-              id
-              name
-              slug
-            }
           }
         }
       }

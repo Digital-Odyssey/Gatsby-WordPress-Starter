@@ -45,7 +45,6 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             content
             excerpt
-            guid
             date(formatString: "Do MMM YYYY HH:mm")
             categories {
               id
@@ -68,20 +67,11 @@ exports.createPages = async ({ graphql, actions }) => {
           count
         }
       }
-      allWordpressTag {
-        nodes {
-          id
-          name
-          path
-          slug
-        }
-      }
       allWordpressWpPortfolio {
         edges {
           node {
             id
             title
-            guid
             excerpt
             slug
             content
@@ -107,7 +97,6 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressPage,
     allWordpressPost,
     allWordpressCategory,
-    allWordpressTag,
     allWordpressWpPortfolio,
   } = result.data
 
@@ -185,7 +174,7 @@ exports.createPages = async ({ graphql, actions }) => {
           catName: catNode.name,
           catSlug: catNode.slug,
           catCount: catNode.count,
-          categories: allWordpressCategory.edges,
+          categories: allWordpressCategory.nodes,
         },
       })
     }

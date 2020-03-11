@@ -46,7 +46,6 @@ const PortfolioItems = () => {
               node {
                 id
                 title
-                guid
                 content
                 slug
                 excerpt

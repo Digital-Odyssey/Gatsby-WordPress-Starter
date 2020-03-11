@@ -1,8 +1,7 @@
 import React from "react"
 import Layout from "../../components/layout"
-import { Link, StaticQuery, graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { SEO } from "../../components"
-import { Pagination } from "../../components/pagination"
 import styled from "styled-components"
 
 const PostsWrapper = styled.div`
@@ -16,7 +15,6 @@ const PostDetails = styled.div`
 `
 
 const Archive = ({ data, pageContext }) => {
-  const { catId, catName, catSlug, catCount, categories } = pageContext
   const { allWordpressPost } = data
 
   return (

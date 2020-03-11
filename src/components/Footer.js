@@ -9,7 +9,9 @@ const FooterWrapper = styled.div`
 `
 
 const Footer = () => {
-  return <FooterWrapper>© 2020 | Gatsby Starter Build</FooterWrapper>
+  return (
+    <FooterWrapper>© 2020 | Gatsby Starter Build by Pulsar Media</FooterWrapper>
+  )
 }
 
 export default Footer

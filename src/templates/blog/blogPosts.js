@@ -32,18 +32,28 @@ const BlogPosts = ({ pageContext }) => {
         {pageContext.posts.map(post => (
           <PostDetails key={post.node.wordpress_id}>
             <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} />
-            <small className="post-date">{post.node.date}</small>
+            <small className="post-date">
+              {post.node.date} | Author:{" "}
+              <a href={post.node.author.path}>{post.node.author.name}</a>
+            </small>
             <p>
               Posted in:{" "}
-              {post.node.categories.map((element, index) => (
-                <CatLink key={index} to={`/archive/${element.slug}`}>
-                  {element.name}{" "}
+              {post.node.categories.map((cat, index) => (
+                <CatLink key={index} to={`/archive/${cat.slug}`}>
+                  {cat.name}{" "}
                 </CatLink>
               ))}
-              | Author: {post.node.author.name}
             </p>
             <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
-
+            <p>
+              {post.node.tags && "Tagged in: "}
+              {post.node.tags &&
+                post.node.tags.map((tag, index) => (
+                  <TagLink key={index} to={`/tags/${tag.slug}`}>
+                    {tag.name}{" "}
+                  </TagLink>
+                ))}
+            </p>
             <div>
               <Link className="read-more" to={`/post/${post.node.slug}`}>
                 Read More

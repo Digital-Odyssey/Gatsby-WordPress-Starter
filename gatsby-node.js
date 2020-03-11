@@ -60,6 +60,8 @@ exports.createPages = async ({ graphql, actions }) => {
               name
               url
               link
+              slug
+              path
             }
           }
         }
@@ -97,6 +99,21 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpUsers {
+        nodes {
+          name
+          description
+          url
+          avatar_urls {
+            wordpress_24
+            wordpress_48
+            wordpress_96
+          }
+          id
+          slug
+          path
+        }
+      }
     }
   `)
 
@@ -112,6 +129,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressCategory,
     allWordpressTag,
     allWordpressWpPortfolio,
+    allWordpressWpUsers,
   } = result.data
 
   //-----WP PAGES
@@ -224,6 +242,23 @@ exports.createPages = async ({ graphql, actions }) => {
         pathSlug: node.slug,
         prev: index === 0 ? null : posts[index - 1].node,
         next: index === posts.length - 1 ? null : posts[index + 1].node,
+      },
+    })
+  })
+
+  //-----WP AUTHOR POST
+  const authorPostTemplate = path.resolve(`./src/templates/author/author.js`)
+
+  allWordpressWpUsers.nodes.forEach(userNode => {
+    createPage({
+      path: `/author/${userNode.slug}`,
+      component: slash(authorPostTemplate),
+      context: {
+        name: userNode.name,
+        slug: userNode.slug,
+        website: userNode.url,
+        description: userNode.description,
+        largeAvatar: userNode.avatar_urls.wordpress_96,
       },
     })
   })

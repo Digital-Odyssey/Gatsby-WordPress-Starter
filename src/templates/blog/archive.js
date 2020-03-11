@@ -15,50 +15,53 @@ const PostDetails = styled.div`
   display: block;
 `
 
-const CatLink = styled(Link)`
-  text-decoration: none;
-  color: blue;
-`
-
-const Archive = ({ pageContext }) => {
+const Archive = ({ data, pageContext }) => {
   const { catId, catName, catSlug, catCount, categories } = pageContext
-  console.log(catName)
+  const { allWordpressPost } = data
+
   return (
-    <StaticQuery
-      query={graphql`
-        query($catId: String, $skip: Int, $limit: Int) {
-          allWordpressPost(
-            filter: { categories: { elemMatch: { id: { eq: $catId } } } }
-            skip: $skip
-            limit: $limit
-          ) {
-            edges {
-              node {
-                id
-                title
-                excerpt
-                slug
-                date(formatString: "DD, MMM, YYYY")
-              }
-            }
-          }
-        }
-      `}
-      render={props => (
-        <div>
-          <Layout>
-            <PostsWrapper>
-              {props.allWordpressPost.edges.map(post => (
-                <PostDetails key={post.node.id}>
-                  <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} />
-                </PostDetails>
-              ))}
-            </PostsWrapper>
-          </Layout>
-        </div>
-      )}
-    />
+    <div>
+      <Layout>
+        <SEO title="Archive" />
+        <h4>Archived posts in "{pageContext.catName}"</h4>
+        <PostsWrapper>
+          {allWordpressPost.edges.map(post => (
+            <PostDetails key={post.node.id}>
+              <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} />
+              <small className="post-date">{post.node.date}</small>
+
+              <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+              <div>
+                <Link className="read-more" to={`/post/${post.node.slug}`}>
+                  Read More
+                </Link>
+              </div>
+            </PostDetails>
+          ))}
+        </PostsWrapper>
+      </Layout>
+    </div>
   )
 }
 
 export default Archive
+
+export const pageQuery = graphql`
+  query($catId: String, $skip: Int, $limit: Int) {
+    allWordpressPost(
+      filter: { categories: { elemMatch: { id: { eq: $catId } } } }
+      skip: $skip
+      limit: $limit
+    ) {
+      edges {
+        node {
+          id
+          title
+          excerpt
+          slug
+          date(formatString: "DD, MMM, YYYY")
+        }
+      }
+    }
+  }
+`

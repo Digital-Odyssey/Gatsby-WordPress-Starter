@@ -19,6 +19,11 @@ const CatLink = styled(Link)`
   color: blue;
 `
 
+const TagLink = styled(Link)`
+  text-decoration: none;
+  color: blue;
+`
+
 const BlogPosts = ({ pageContext }) => {
   return (
     <Layout>
@@ -35,8 +40,10 @@ const BlogPosts = ({ pageContext }) => {
                   {element.name}{" "}
                 </CatLink>
               ))}
+              | Author: {post.node.author.name}
             </p>
             <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+
             <div>
               <Link className="read-more" to={`/post/${post.node.slug}`}>
                 Read More

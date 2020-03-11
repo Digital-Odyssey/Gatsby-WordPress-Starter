@@ -37,29 +37,42 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            slug
-            status
-            template
-            wordpress_id
-            format
             title
+            template
+            status
+            slug
+            wordpress_id
             content
-            excerpt
             date(formatString: "Do MMM YYYY HH:mm")
-            categories {
-              id
-              name
-              slug
-            }
+            excerpt
+            format
             tags {
               id
               name
               slug
             }
+            categories {
+              id
+              name
+              slug
+            }
+            author {
+              name
+              url
+              link
+            }
           }
         }
       }
       allWordpressCategory {
+        nodes {
+          id
+          name
+          slug
+          count
+        }
+      }
+      allWordpressTag {
         nodes {
           id
           name
@@ -97,6 +110,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressPage,
     allWordpressPost,
     allWordpressCategory,
+    allWordpressTag,
     allWordpressWpPortfolio,
   } = result.data
 
@@ -178,6 +192,23 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }
+  })
+
+  //----WP TAGS
+  const tagsTemplate = path.resolve(`./src/templates/blog/tags.js`)
+
+  allWordpressTag.nodes.forEach(tagNode => {
+    createPage({
+      path: `/tags/${tagNode.slug}`,
+      component: slash(tagsTemplate),
+      context: {
+        tagId: tagNode.id,
+        tagName: tagNode.name,
+        tagSlug: tagNode.slug,
+        tagCount: tagNode.count,
+        tags: allWordpressTag.nodes,
+      },
+    })
   })
 
   //-----WP SINGLE POST

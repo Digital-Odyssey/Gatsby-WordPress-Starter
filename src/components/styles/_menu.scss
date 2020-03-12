@@ -1,0 +1,90 @@
+nav.main-menu {
+  margin: 5px 0 10px 0; /* just to give some spacing */
+  color: #212121;
+  text-transform: uppercase;
+  position: absolute;
+  right: 0px;
+  font-family: "Teko", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0 auto;
+}
+
+.nav-active {
+  color: yellow;
+}
+
+nav.main-menu ul li {
+  display: block;
+  margin: 0 10px 0 0;
+  float: left;
+
+  position: relative; /* this is needed in order to position sub menus */
+
+  a {
+    padding: 0 10px 40px 10px;
+    display: block;
+    color: white;
+    font-family: "Open Sans";
+    text-transform: none;
+    @include transition(all, 0.3s);
+  }
+
+  span {
+    margin: 0 0 0 5px;
+    position: absolute;
+    color: white;
+    right: -4px;
+    top: -3px;
+  }
+}
+
+nav.main-menu ul li:last-child {
+  margin: 0;
+}
+
+nav.main-menu ul li:hover > ul {
+  display: block; /* show sub menus when hovering over a parent */
+}
+
+nav.main-menu ul li a:hover {
+  color: yellow;
+}
+
+nav.main-menu ul ul {
+  animation: fadeInMenu 0.3s both ease-in;
+  display: none; /* hide all sub menus from view */
+  position: absolute;
+  left: 0;
+  margin: 0;
+  top: 60px; /* this should be the same height as the top level menu -- height + padding + borders */
+
+  text-transform: none;
+  background-color: #2b2c30;
+  z-index: 100;
+
+  @include boxShadow(0px, 6px, 23px, -10px, rgba(0, 0, 0, 0.5));
+}
+
+nav.main-menu ul ul li {
+  /* this targets all submenu items */
+  width: auto; /* set to the width you want your sub menus to be. This needs to match the value we set below */
+  min-width: 170px;
+}
+
+nav.main-menu ul ul li a {
+  /* target all sub menu item links */
+  padding: 12px 15px; /* give our sub menu links a nice button feel */
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes fadeInMenu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

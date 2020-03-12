@@ -5,18 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import { MainMenu } from "./menu"
-import { Footer } from "./"
-import styled from "styled-components"
-import Helmet from "react-helmet"
-import "./styles/layout.scss"
-
-const LayoutWrapper = styled.div`
-  max-width: 960px;
-  margin: 30px auto;
-`
+import React from "react";
+import PropTypes from "prop-types";
+import { StaticQuery, graphql } from "gatsby";
+import { Header, Footer } from "./";
+import Helmet from "react-helmet";
+import "./styles/layout.scss";
+import "bootstrap/dist/css/bootstrap-grid.css";
 
 const Layout = ({ children }) => {
   return (
@@ -35,7 +30,7 @@ const Layout = ({ children }) => {
         }
       `}
       render={props => (
-        <div>
+        <div id="site-wrapper">
           <Helmet>
             <link
               rel="icon"
@@ -44,15 +39,21 @@ const Layout = ({ children }) => {
               sizes="16x16"
             />
           </Helmet>
-          <MainMenu />
-          <LayoutWrapper>
-            {children}
+          <Header />
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">{children}</div>
+            </div>
             <Footer />
-          </LayoutWrapper>
+          </div>
         </div>
       )}
     />
-  )
-}
+  );
+};
 
-export default Layout
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Layout;

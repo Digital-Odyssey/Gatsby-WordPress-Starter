@@ -1,17 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-
-const FooterWrapper = styled.div`
-  padding: 15px 0;
-  margin: 30px 0 0;
-  font-size: 12px;
-  border-top: 1px solid #ccc;
-`
+import React from "react";
 
 const Footer = () => {
-  return (
-    <FooterWrapper>© 2020 | Gatsby Starter Build by Pulsar Media</FooterWrapper>
-  )
-}
+  return <footer>© 2020 | Gatsby Starter Build by Pulsar Media</footer>;
+};
 
-export default Footer
+export default Footer;

@@ -90,9 +90,9 @@
   transform: skew($x, $y);
 }
 
-@mixin boxShadow($v1, $v2, $v3, $v4) {
-  -webkit-box-shadow: $v1 $v2 $v3 $v4;
-  box-shadow: $v1 $v2 $v3 $v4;
+@mixin boxShadow($v1, $v2, $v3, $v4, $v5) {
+  -webkit-box-shadow: $v1 $v2 $v3 $v4 $v5;
+  box-shadow: $v1 $v2 $v3 $v4 $v5;
 }
 
 @mixin css-triangle(

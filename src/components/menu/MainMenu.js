@@ -1,14 +1,14 @@
-import React from "react"
-import { graphql, StaticQuery, Link } from "gatsby"
-import styled from "styled-components"
+import React from "react";
+import { graphql, StaticQuery, Link } from "gatsby";
+import styled from "styled-components";
 
-import { SiteInfo } from "../site"
+import { SiteInfo } from "../site";
 
 const MainMenuWrapper = styled.div`
   display: flex;
   background-color: #2b2c30;
   padding: 10px 0;
-`
+`;
 
 const MenuItem = styled(Link)`
   color: white;
@@ -16,7 +16,7 @@ const MenuItem = styled(Link)`
   padding: 8px 12px;
   font-size: 13px;
   text-decoration: none;
-`
+`;
 
 const MainMenuInner = styled.div`
   max-width: 990px;
@@ -24,7 +24,7 @@ const MainMenuInner = styled.div`
   display: flex;
   width: 960px;
   height: 100%;
-`
+`;
 
 const MainMenu = () => {
   return (
@@ -62,7 +62,7 @@ const MainMenu = () => {
         </MainMenuWrapper>
       )}
     />
-  )
-}
+  );
+};
 
-export default MainMenu
+export default MainMenu;

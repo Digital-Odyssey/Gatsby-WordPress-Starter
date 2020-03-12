@@ -1,6 +1,6 @@
-const path = require(`path`)
-const slash = require(`slash`)
-const { paginate } = require("gatsby-awesome-pagination")
+const path = require(`path`);
+const slash = require(`slash`);
+const { paginate } = require("gatsby-awesome-pagination");
 
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
@@ -9,7 +9,7 @@ const { paginate } = require("gatsby-awesome-pagination")
 // Will create pages for WordPress pages (route : /{slug})
 // Will create pages for WordPress posts (route : /post/{slug})
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions
+  const { createPage, createRedirect } = actions;
   /* createRedirect({
     fromPath: "/",
     toPath: "/home",
@@ -116,11 +116,11 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
 
   // Check for any errors
   if (result.errors) {
-    throw new Error(result.errors)
+    throw new Error(result.errors);
   }
 
   // Access query results via object destructuring
@@ -131,13 +131,13 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressTag,
     allWordpressWpPortfolio,
     allWordpressWpUsers,
-  } = result.data
+  } = result.data;
 
   //-----WP PAGES
-  const pageTemplate = path.resolve(`./src/templates/page.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`);
   const portfolioUnderContentTemplate = path.resolve(
     "./src/templates/portfolio/portfolioUnderContent.js"
-  )
+  );
   // We want to create a detailed page for each page node.
   // The path field contains the relative original WordPress link
   // and we use it for the slug to preserve url structure.
@@ -158,19 +158,19 @@ exports.createPages = async ({ graphql, actions }) => {
           : pageTemplate
       ),
       context: edge.node, //edge.node contains all the data for our page
-    })
-  })
+    });
+  });
 
   //-----WP POSTS
-  const postTemplate = path.resolve(`./src/templates/blog/blogPosts.js`)
+  const postTemplate = path.resolve(`./src/templates/blog/blog.js`);
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
   // and we use it for the slug to preserve url structure.
   // The Post ID is prefixed with 'POST_'
-  const posts = allWordpressPost.edges
-  const postsPerPage = 5
-  const numberOfPages = Math.ceil(posts.length / postsPerPage)
-  const pagingDisplay = 3
+  const posts = allWordpressPost.edges;
+  const postsPerPage = 5;
+  const numberOfPages = Math.ceil(posts.length / postsPerPage);
+  const pagingDisplay = 3;
 
   Array.from({ length: numberOfPages }).forEach((page, index) => {
     createPage({
@@ -185,18 +185,18 @@ exports.createPages = async ({ graphql, actions }) => {
         pagingDisplay,
         currentPage: index + 1,
       },
-    })
-  })
+    });
+  });
 
   //----WP ARCHIVES
-  const archiveTemplate = path.resolve(`./src/templates/blog/archive.js`)
+  const archiveTemplate = path.resolve(`./src/templates/blog/archive.js`);
 
   allWordpressCategory.nodes.forEach(catNode => {
     //filter out posts that belongs to the current category
     const filteredPosts = allWordpressPost.edges.filter(
       //destructure categories
       ({ node: { categories } }) => categories.some(el => el.id === catNode.id)
-    )
+    );
     //some categories may be emtpy so dont show them
     if (filteredPosts.length > 0) {
       paginate({
@@ -212,19 +212,19 @@ exports.createPages = async ({ graphql, actions }) => {
           catCount: catNode.count,
           categories: allWordpressCategory.nodes,
         },
-      })
+      });
     }
-  })
+  });
 
   //----WP TAGS
-  const tagsTemplate = path.resolve(`./src/templates/blog/tags.js`)
+  const tagsTemplate = path.resolve(`./src/templates/blog/tags.js`);
 
   allWordpressTag.nodes.forEach(tagNode => {
     //filter out posts that belongs to the current category
     const filteredPosts = allWordpressPost.edges.filter(
       //destructure categories
       ({ node: { tags } }) => tags.some(el => el.id === tagNode.id)
-    )
+    );
     //some categories may be emtpy so dont show them
     if (filteredPosts.length > 0) {
       paginate({
@@ -240,12 +240,12 @@ exports.createPages = async ({ graphql, actions }) => {
           tagCount: tagNode.count,
           tags: allWordpressTag.nodes,
         },
-      })
+      });
     }
-  })
+  });
 
   //-----WP SINGLE POST
-  const singlePostTemplate = path.resolve(`./src/templates/post.js`)
+  const singlePostTemplate = path.resolve(`./src/templates/post.js`);
 
   posts.forEach(({ node }, index) => {
     createPage({
@@ -258,11 +258,11 @@ exports.createPages = async ({ graphql, actions }) => {
         prev: index === 0 ? null : posts[index - 1].node,
         next: index === posts.length - 1 ? null : posts[index + 1].node,
       },
-    })
-  })
+    });
+  });
 
   //-----WP AUTHOR POST
-  const authorPostTemplate = path.resolve(`./src/templates/author/author.js`)
+  const authorPostTemplate = path.resolve(`./src/templates/author/author.js`);
 
   allWordpressWpUsers.nodes.forEach(userNode => {
     createPage({
@@ -275,19 +275,19 @@ exports.createPages = async ({ graphql, actions }) => {
         description: userNode.description,
         largeAvatar: userNode.avatar_urls.wordpress_96,
       },
-    })
-  })
+    });
+  });
 
   //-----PORTFOLIO POSTS
   const portfolioTemplate = path.resolve(
     `./src/templates/portfolio/portfolio.js`
-  )
+  );
 
   allWordpressWpPortfolio.edges.forEach(edge => {
     createPage({
       path: `/portfolio/${edge.node.slug}`,
       component: slash(portfolioTemplate),
       context: edge.node, //edge.node contains all the data for our post
-    })
-  })
-}
+    });
+  });
+};

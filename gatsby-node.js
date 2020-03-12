@@ -1,5 +1,6 @@
 const path = require(`path`)
 const slash = require(`slash`)
+const { paginate } = require("gatsby-awesome-pagination")
 
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
@@ -167,7 +168,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // and we use it for the slug to preserve url structure.
   // The Post ID is prefixed with 'POST_'
   const posts = allWordpressPost.edges
-  const postsPerPage = 2
+  const postsPerPage = 5
   const numberOfPages = Math.ceil(posts.length / postsPerPage)
   const pagingDisplay = 3
 
@@ -198,8 +199,11 @@ exports.createPages = async ({ graphql, actions }) => {
     )
     //some categories may be emtpy so dont show them
     if (filteredPosts.length > 0) {
-      createPage({
-        path: `/archive/${catNode.slug}`,
+      paginate({
+        createPage,
+        items: filteredPosts,
+        itemsPerPage: 5,
+        pathPrefix: `/archive/${catNode.slug}`,
         component: slash(archiveTemplate),
         context: {
           catId: catNode.id,
@@ -216,17 +220,28 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagsTemplate = path.resolve(`./src/templates/blog/tags.js`)
 
   allWordpressTag.nodes.forEach(tagNode => {
-    createPage({
-      path: `/tags/${tagNode.slug}`,
-      component: slash(tagsTemplate),
-      context: {
-        tagId: tagNode.id,
-        tagName: tagNode.name,
-        tagSlug: tagNode.slug,
-        tagCount: tagNode.count,
-        tags: allWordpressTag.nodes,
-      },
-    })
+    //filter out posts that belongs to the current category
+    const filteredPosts = allWordpressPost.edges.filter(
+      //destructure categories
+      ({ node: { tags } }) => tags.some(el => el.id === tagNode.id)
+    )
+    //some categories may be emtpy so dont show them
+    if (filteredPosts.length > 0) {
+      paginate({
+        createPage,
+        items: filteredPosts,
+        itemsPerPage: 5,
+        pathPrefix: `/tags/${tagNode.slug}`,
+        component: slash(tagsTemplate),
+        context: {
+          tagId: tagNode.id,
+          tagName: tagNode.name,
+          tagSlug: tagNode.slug,
+          tagCount: tagNode.count,
+          tags: allWordpressTag.nodes,
+        },
+      })
+    }
   })
 
   //-----WP SINGLE POST

@@ -3,6 +3,7 @@ import Layout from "../../components/layout"
 import { Link, graphql } from "gatsby"
 import { SEO } from "../../components"
 import styled from "styled-components"
+import { GatsbyPagination } from "../../components/pagination"
 
 const PostsWrapper = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const PostDetails = styled.div`
 `
 
 const Archive = ({ data, pageContext }) => {
+  const { catSlug, humanPageNumber, numberOfPages } = pageContext
   const { allWordpressPost } = data
 
   return (
@@ -37,6 +39,12 @@ const Archive = ({ data, pageContext }) => {
             </PostDetails>
           ))}
         </PostsWrapper>
+        <GatsbyPagination
+          path={"archive"}
+          slug={catSlug}
+          page={humanPageNumber}
+          totalPages={numberOfPages}
+        />
       </Layout>
     </div>
   )

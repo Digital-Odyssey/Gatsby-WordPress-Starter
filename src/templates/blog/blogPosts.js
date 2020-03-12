@@ -34,7 +34,7 @@ const BlogPosts = ({ pageContext }) => {
             <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} />
             <small className="post-date">
               {post.node.date} | Author:{" "}
-              <a href={post.node.author.path}>{post.node.author.name}</a>
+              <Link to={post.node.author.path}>{post.node.author.name}</Link>
             </small>
             <p>
               Posted in:{" "}

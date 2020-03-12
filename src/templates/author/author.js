@@ -22,7 +22,7 @@ const Author = ({ pageContext }) => {
           <p dangerouslySetInnerHTML={{ __html: pageContext.description }} />
         </Profile>
 
-        <a href={pageContext.website} target="_blank">
+        <a href={pageContext.website} target="_blank" rel="noopener noreferrer">
           {pageContext.website}
         </a>
       </div>

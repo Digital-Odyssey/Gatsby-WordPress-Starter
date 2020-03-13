@@ -18,3 +18,37 @@ article {
     color: red;
   }
 }
+
+.post-date {
+  margin: 10px 0;
+  display: inline-block;
+  font-size: 11px;
+}
+
+.read-more {
+  background-color: blue;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.3s;
+  margin: 10px 0 0;
+  display: inline-block;
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+}
+
+.post-prev-link {
+  border-radius: 99px 0 0 99px;
+}
+
+.post-next-link {
+  border-radius: 0 99px 99px 0;
+}
+
+.page-number.white {
+  color: white !important;
+}

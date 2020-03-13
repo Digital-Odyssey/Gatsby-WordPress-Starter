@@ -1,14 +1,17 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import fetch from "isomorphic-fetch";
+import React from "react";
+import { ApolloProvider } from "react-apollo";
+import ApolloClient from "apollo-boost";
 
-// You can delete this file if you're not using it
-/* exports.onRouteUpdate = () => {
-  const locations = window.locations || [document.referrer]
-  locations.push(window.location.href)
-  window.previousPath = locations[locations.length - 2]
-} */
+// Wraps the entire Gatsby app with Apollo.
+export const wrapRootElement = ({ element }) => {
+  // Register a new Apollo client.
+  const client = new ApolloClient({
+    fetch,
+    // Change this to your GraphQL endpoint.
+    uri: "http://gatsbywpstarter.local/graphql",
+  });
 
-// Logs when the client route changes
+  // Wrap the element.
+  return <ApolloProvider client={client}>{element}</ApolloProvider>;
+};

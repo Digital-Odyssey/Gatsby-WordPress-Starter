@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: ".env",
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -123,6 +123,7 @@ module.exports = {
           "**/menus",
           "**/portfolio",
           "**/users",
+          "**/comments",
           "/*/*/logo",
           "/*/*/favicon",
         ],
@@ -135,7 +136,7 @@ module.exports = {
         keepMediaSizes: false,
         // use a custom normalizer which is applied after the built-in ones.
         normalizer: function({ entities }) {
-          return entities
+          return entities;
         },
         // The normalizers option allows you to manipulate the array of internal
         // normalizers that are applied to entities after they're fetched
@@ -152,7 +153,7 @@ module.exports = {
             name: "nameOfTheFunction",
             normalizer: function({ entities }) {
               // manipulate entities here
-              return entities
+              return entities;
             },
           },
         ],
@@ -174,4 +175,4 @@ module.exports = {
       },
     },
   ],
-}
+};

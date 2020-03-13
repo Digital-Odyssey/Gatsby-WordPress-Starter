@@ -1,17 +1,17 @@
-import React from "react"
-import styled from "styled-components"
-import { Link } from "gatsby"
+import React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
 
 const PaginationWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-`
+`;
 
 const PageNumberWrapper = styled.div`
   display: flex;
   background: ${props => (props.isCurrentPage ? "red" : "white")};
   color: white;
-`
+`;
 
 const PageNumber = styled(Link)`
   padding: 8px 12px;
@@ -22,8 +22,9 @@ const PageNumber = styled(Link)`
   transition: all 0.3s;
   :hover {
     background: red;
+    color: white;
   }
-`
+`;
 
 const pagination = ({ pageContext, path }) => {
   return (
@@ -82,7 +83,7 @@ const pagination = ({ pageContext, path }) => {
         ""
       )}
     </PaginationWrapper>
-  )
-}
+  );
+};
 
-export default pagination
+export default pagination;

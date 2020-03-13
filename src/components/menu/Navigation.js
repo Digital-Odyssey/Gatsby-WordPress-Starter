@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 
 const Navigation = ({ menu }) => (
-  <nav class="main-menu">
+  <nav className="main-menu">
     <ul>
       <li>
         <Link to={"/"}>Home</Link>

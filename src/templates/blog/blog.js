@@ -9,8 +9,8 @@ const Blog = ({ pageContext }) => {
     <Layout>
       <SEO title="Blog" />
       <div className="posts-wrapper">
-        {pageContext.posts.map(post => (
-          <BlogPost post={post} />
+        {pageContext.posts.map((post, index) => (
+          <BlogPost key={index} post={post} />
         ))}
       </div>
       <Pagination pageContext={pageContext} path={"/blog"} />

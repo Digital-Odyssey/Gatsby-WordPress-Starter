@@ -254,6 +254,10 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         title: node.title,
         content: node.content,
+        date: node.date,
+        categories: node.categories,
+        tags: node.tags,
+        author: node.author,
         pathSlug: node.slug,
         prev: index === 0 ? null : posts[index - 1].node,
         next: index === posts.length - 1 ? null : posts[index + 1].node,

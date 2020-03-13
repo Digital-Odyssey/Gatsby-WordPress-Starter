@@ -4,9 +4,9 @@ import { Link } from "gatsby";
 const BlogPost = ({ post }) => {
   return (
     <article key={post.node.wordpress_id}>
-      <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} />
+      <h1 dangerouslySetInnerHTML={{ __html: post.node.title }} />
       <small className="post-date">
-        {post.node.date} | Author:{" "}
+        Posted: {post.node.date} | Author:{" "}
         <Link to={post.node.author.path}>{post.node.author.name}</Link>
       </small>
       <p>

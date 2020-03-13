@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { Header, Footer } from "./";
 import Helmet from "react-helmet";
 import "./styles/layout.scss";
-import "bootstrap/dist/css/bootstrap-grid.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Layout = ({ children }) => {
   return (

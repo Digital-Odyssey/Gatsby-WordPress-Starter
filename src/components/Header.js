@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { SiteLogo } from "../components/site";
-import { Navigation } from "../components/menu";
+import { BootstrapNavigation } from "../components/menu";
 
 const Header = () => {
   const {
@@ -37,11 +37,11 @@ const Header = () => {
     <header>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-4 header-logo">
             <SiteLogo />
           </div>
-          <div className="col-md-8 menu">
-            <Navigation menu={menu} />
+          <div className="col-md-8 header-menu">
+            <BootstrapNavigation menu={menu} />
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
+  font-size: 16px;
 }
 
 a {
@@ -19,44 +20,138 @@ a {
   }
 }
 
-.post-date {
-  margin: 10px 0;
-  display: inline-block;
-  font-size: 11px;
-}
-
 p {
   margin-bottom: 10px;
 }
+
 h1 {
-  margin-bottom: 20px;
-}
-.page-number.white {
-  color: white !important;
+  font-size: 2rem;
+  margin-bottom: 0.1em;
 }
 
-.read-more {
-  background-color: blue;
-  color: white;
-  border-radius: 4px;
-  padding: 8px 12px;
-  text-decoration: none;
-  font-size: 13px;
-  transition: all 0.3s;
-  margin: 10px 0 0;
-  display: inline-block;
-  &:hover {
-    background-color: red;
-    color: white;
+header {
+  background: #fff;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  width: 100%;
+  background-color: #2b2c30;
+}
+
+header img {
+  max-width: 100% !important;
+}
+
+.header-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  @include sm-screen {
+    padding-top: 10px;
   }
 }
 
-.post-prev-link {
-  border-radius: 99px 0 0 99px;
+.header-menu nav {
+  float: right;
+
+  @include md-screen {
+    float: none;
+  }
+
+  @include sm-screen {
+    float: none;
+  }
 }
 
-.post-next-link {
-  border-radius: 0 99px 99px 0;
+.navbar-toggler {
+  @include md-screen {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  @include sm-screen {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+}
+
+.navbar-toggler-icon {
+  background: none !important;
+}
+
+/* Collapsed state */
+.navbar-toggler.collapsed .navbar-toggler-icon::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  top: 15px;
+  left: 0;
+
+  @include transition(all, 0.3s);
+
+  transform: translateY(0px) translateX(0px) rotate(0deg);
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon::after {
+  content: "";
+  width: 15px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+
+  @include transition(all, 0.3s);
+
+  transform: translateY(0px) translateX(0px) rotate(0deg);
+}
+
+/* Expanded state */
+.navbar-toggler .navbar-toggler-icon::before {
+  content: "";
+  width: 13px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  top: 17px;
+  left: 0;
+
+  @include transition(all, 0.3s);
+
+  transform: translateY(0px) translateX(10px) rotate(-45deg);
+
+  -webkit-transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
+    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
+
+  transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
+    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
+}
+
+.navbar-toggler .navbar-toggler-icon::after {
+  content: "";
+  width: 13px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  bottom: 19px;
+  left: 0;
+
+  @include transition(all, 0.3s);
+
+  transform: translateY(0px) translateX(10px) rotate(45deg);
+
+  -webkit-transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
+    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
+
+  transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
+    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
 }
 
 footer {
@@ -66,20 +161,5 @@ footer {
   border-top: 1px solid #ccc;
 }
 
-header {
-  background: #fff;
-  margin-bottom: 1.45rem;
-  display: flex;
-  align-items: center;
-  z-index: 999;
-  width: 100%;
-  background-color: #2b2c30;
-  height: 100px;
-}
-
-header img {
-  max-width: 100% !important;
-}
-
-@import "menu";
+@import "bootstrap-menu";
 @import "blog";

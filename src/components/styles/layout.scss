@@ -88,5 +88,10 @@ footer {
   @include borderRadiusAll(99px);
 }
 
+.hero-banner-btn:hover {
+  background-color: black;
+  color: white;
+}
+
 @import "bootstrap-menu";
 @import "blog";

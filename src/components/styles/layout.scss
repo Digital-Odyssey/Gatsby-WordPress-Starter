@@ -10,6 +10,10 @@ body {
   font-size: 16px;
 }
 
+.container.body {
+  margin: 50px auto;
+}
+
 a {
   color: blue;
   text-decoration: none !important;
@@ -30,14 +34,12 @@ h1 {
 }
 
 header {
-  background: #fff;
-  margin-bottom: 2rem;
+  background-color: #2b2c30;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999;
   width: 100%;
-  background-color: #2b2c30;
 }
 
 header img {
@@ -66,99 +68,24 @@ header img {
   }
 }
 
-.navbar-toggler {
-  @include md-screen {
-    position: fixed;
-    top: 0;
-    right: 0;
-  }
-
-  @include sm-screen {
-    position: fixed;
-    top: 0;
-    right: 0;
-  }
-}
-
-.navbar-toggler-icon {
-  background: none !important;
-}
-
-/* Collapsed state */
-.navbar-toggler.collapsed .navbar-toggler-icon::before {
-  content: "";
-  width: 30px;
-  height: 2px;
-  background-color: white;
-  position: absolute;
-  top: 15px;
-  left: 0;
-
-  @include transition(all, 0.3s);
-
-  transform: translateY(0px) translateX(0px) rotate(0deg);
-}
-
-.navbar-toggler.collapsed .navbar-toggler-icon::after {
-  content: "";
-  width: 15px;
-  height: 2px;
-  background-color: white;
-  position: absolute;
-  bottom: 15px;
-  left: 0;
-
-  @include transition(all, 0.3s);
-
-  transform: translateY(0px) translateX(0px) rotate(0deg);
-}
-
-/* Expanded state */
-.navbar-toggler .navbar-toggler-icon::before {
-  content: "";
-  width: 13px;
-  height: 2px;
-  background-color: white;
-  position: absolute;
-  top: 17px;
-  left: 0;
-
-  @include transition(all, 0.3s);
-
-  transform: translateY(0px) translateX(10px) rotate(-45deg);
-
-  -webkit-transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
-    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
-
-  transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
-    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
-}
-
-.navbar-toggler .navbar-toggler-icon::after {
-  content: "";
-  width: 13px;
-  height: 2px;
-  background-color: white;
-  position: absolute;
-  bottom: 19px;
-  left: 0;
-
-  @include transition(all, 0.3s);
-
-  transform: translateY(0px) translateX(10px) rotate(45deg);
-
-  -webkit-transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
-    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
-
-  transition: height 0.3s, top 0.3s, bottom 0.3s, border-radius 0.15s,
-    opacity 0.15s, background 0.3s, -webkit-transform 0.15s 0.3s;
-}
-
 footer {
   padding: 15px 0;
   margin: 30px 0 0;
   font-size: 12px;
-  border-top: 1px solid #ccc;
+  background-color: #2b2c30;
+  color: white;
+}
+
+.hero-banner-btn {
+  padding: 1.3rem 2rem;
+  line-height: 0;
+  background-color: blue;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Open sans";
+
+  @include borderRadiusAll(99px);
 }
 
 @import "bootstrap-menu";

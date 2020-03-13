@@ -40,12 +40,12 @@ const Layout = ({ children }) => {
             />
           </Helmet>
           <Header />
-          <div className="container">
+          <div className="container body">
             <div className="row">
               <div className="col-lg-12">{children}</div>
             </div>
-            <Footer />
           </div>
+          <Footer />
         </div>
       )}
     />

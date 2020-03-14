@@ -8,7 +8,6 @@ import { BlogPost } from "../../components/blog";
 const Tags = ({ data, pageContext }) => {
   const { tagSlug, humanPageNumber, numberOfPages } = pageContext;
   const { allWordpressPost } = data;
-  console.log("numberOfPages", numberOfPages);
   return (
     <>
       <Layout>

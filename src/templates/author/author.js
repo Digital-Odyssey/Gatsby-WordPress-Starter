@@ -1,17 +1,16 @@
-import React from "react"
-import Layout from "../../components/layout"
-import { SEO } from "../../components"
-import styled from "styled-components"
+import React from "react";
+import Layout from "../../components/layout";
+import { SEO } from "../../components";
+import styled from "styled-components";
 
 const Profile = styled.div`
   margin: 20px 0 0;
-`
+`;
 const ProfileImage = styled.img`
   border-radius: 100%;
-`
+`;
 
 const Author = ({ pageContext }) => {
-  console.log(pageContext.authorSlug)
   return (
     <Layout>
       <SEO title="Author" />
@@ -27,7 +26,7 @@ const Author = ({ pageContext }) => {
         </a>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Author
+export default Author;

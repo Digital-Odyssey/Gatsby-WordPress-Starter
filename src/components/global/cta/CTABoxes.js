@@ -17,7 +17,7 @@ const CTABoxes = () => {
     }
 
     query {
-      cta: wordpressPage(wordpress_id: { eq: 90 }) {
+      cta: wordpressPage(slug: { eq: "home" }) {
         acf {
           cta_box_1_title
           cta_box_2_title

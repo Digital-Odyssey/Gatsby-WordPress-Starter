@@ -32,6 +32,11 @@ const Post = ({ pageContext }) => {
         Posted: {pageContext.date} | Author:{" "}
         <Link to={pageContext.author.path}>{pageContext.author.name}</Link>
       </small>
+      <img
+        src={pageContext.source_url}
+        alt={pageContext.title}
+        className="mt-10 mb-30"
+      />
       <p>
         Posted in:{" "}
         {pageContext.categories.map((cat, index) => (

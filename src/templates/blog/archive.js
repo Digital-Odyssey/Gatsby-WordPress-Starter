@@ -46,6 +46,9 @@ export const pageQuery = graphql`
           excerpt
           slug
           date(formatString: "DD, MMM, YYYY")
+          featured_media {
+            source_url
+          }
           tags {
             id
             name

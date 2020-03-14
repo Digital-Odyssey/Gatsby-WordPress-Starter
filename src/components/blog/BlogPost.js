@@ -9,6 +9,12 @@ const BlogPost = ({ post }) => {
         Posted: {post.node.date} | Author:{" "}
         <Link to={post.node.author.path}>{post.node.author.name}</Link>
       </small>
+      <img
+        src={post.node.featured_media.source_url}
+        alt={post.node.title}
+        className="mt-10 mb-30"
+      />
+
       <p>
         Posted in:{" "}
         {post.node.categories.map((cat, index) => (
@@ -19,8 +25,8 @@ const BlogPost = ({ post }) => {
       </p>
       <p dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
       <p>
-        {post.node.tags && "Tagged in: "}
-        {post.node.tags &&
+        {post.node.tags[0].id !== "undefined" ? "Tagged in: " : ""}
+        {post.node.tags[0].id !== "undefined" &&
           post.node.tags.map((tag, index) => (
             <Link className="tag-link" key={index} to={`/tags/${tag.slug}`}>
               {tag.name}{" "}

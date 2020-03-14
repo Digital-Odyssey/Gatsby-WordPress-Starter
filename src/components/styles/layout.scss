@@ -14,6 +14,10 @@ body {
   margin: 50px auto;
 }
 
+img {
+  max-width: 100%;
+}
+
 a {
   color: blue;
   text-decoration: none !important;
@@ -95,3 +99,4 @@ footer {
 
 @import "bootstrap-menu";
 @import "blog";
+@import "helpers";

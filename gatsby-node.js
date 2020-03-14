@@ -2,6 +2,30 @@ const path = require(`path`);
 const slash = require(`slash`);
 const { paginate } = require("gatsby-awesome-pagination");
 
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    wordpress__POST: {
+      tags: {
+        resolve(source, args, context, info) {
+          const { tags } = source;
+          if (tags === null || (Array.isArray(tags) && !tags.length)) {
+            return [
+              {
+                id: "undefined",
+                name: "undefined",
+                slug: "undefined",
+              },
+            ];
+          } else {
+            return info.originalResolver(source, args, context, info);
+          }
+        },
+      },
+    },
+  };
+  createResolvers(resolvers);
+};
+
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
 // access to any information necessary to programmatically
@@ -47,6 +71,9 @@ exports.createPages = async ({ graphql, actions }) => {
             date(formatString: "Do MMM YYYY HH:mm")
             excerpt
             format
+            featured_media {
+              source_url
+            }
             tags {
               id
               name
@@ -259,6 +286,7 @@ exports.createPages = async ({ graphql, actions }) => {
         tags: node.tags,
         author: node.author,
         pathSlug: node.slug,
+        source_url: node.featured_media.source_url,
         prev: index === 0 ? null : posts[index - 1].node,
         next: index === posts.length - 1 ? null : posts[index + 1].node,
       },

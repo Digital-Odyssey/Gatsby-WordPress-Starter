@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const StyledImg = styled(Img)`
-  height: 200px;
+  height: 250px;
 `;
 
 const PageHero = ({ img }) => {

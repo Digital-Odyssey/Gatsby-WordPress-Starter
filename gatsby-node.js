@@ -90,6 +90,11 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             wordpress_id
             wordpress_parent
+            acf {
+              page_hero_img {
+                source_url
+              }
+            }
           }
         }
       }
@@ -158,6 +163,9 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             acf {
               portfolio_url
+              page_hero_img {
+                source_url
+              }
             }
           }
         }
@@ -197,8 +205,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   //-----WP PAGES
   const pageTemplate = path.resolve(`./src/templates/page.js`);
-  const portfolioUnderContentTemplate = path.resolve(
-    "./src/templates/portfolio/portfolioUnderContent.js"
+  const portfolioPageTemplate = path.resolve(
+    "./src/templates/portfolio/portfolioTemplate.js"
   );
   // We want to create a detailed page for each page node.
   // The path field contains the relative original WordPress link
@@ -216,8 +224,8 @@ exports.createPages = async ({ graphql, actions }) => {
         // can query data specific to each page.
         path: `/${edge.node.fields.path}`,
         component: slash(
-          edge.node.template === "portfolio_under_content.php"
-            ? portfolioUnderContentTemplate
+          edge.node.template === "portfolio_template.php"
+            ? portfolioPageTemplate
             : pageTemplate
         ),
         context: {
@@ -229,6 +237,7 @@ exports.createPages = async ({ graphql, actions }) => {
           content: edge.node.content,
           parent: edge.node.wordpress_parent,
           wpId: edge.node.wordpress_id,
+          heroImg: edge.node.acf.page_hero_img.source_url,
         }, //edge.node contains all the data for our page
       });
     }

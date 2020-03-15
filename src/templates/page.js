@@ -12,13 +12,14 @@ const PageContent = styled.article`
 `;
 
 const Page = ({ data }) => {
-  console.log("parentChildren", data.parentChildren);
   return (
     <Layout>
       <SEO title={data.currentPage.title} />
       {data.currentPage.featured_media ? (
         <PageHero
-          img={data.currentPage.featured_media.localFile.childImageSharp.fluid}
+          img={
+            data.currentPage.acf.page_hero_img.localFile.childImageSharp.fluid
+          }
         />
       ) : null}
       <Breadcrumbs parent={data.parent} />
@@ -49,6 +50,17 @@ export const pageQuery = graphql`
       title
       content
       wordpress_parent
+      acf {
+        page_hero_img {
+          localFile {
+            childImageSharp {
+              fluid(quality: 100, maxWidth: 4000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
       featured_media {
         localFile {
           childImageSharp {

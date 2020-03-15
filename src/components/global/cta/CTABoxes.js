@@ -43,6 +43,15 @@ const CTABoxes = () => {
     <>
       <div className="container">
         <div className="row">
+          <div className="col-lg-12 text-center p-3">
+            <h3>A starter build for your Gatsby WordPress project</h3>
+            <p>
+              Includes a full blog section with categories and tags being parsed
+              from WordPress via the REST API. <br className="line-break" />
+              Also includes React Bootstrap, React Icons a custom Hero Slider,
+              portfolio custom post type and a news sidebar.
+            </p>
+          </div>
           <div className="col-md-4">
             <CTA
               image={cta.cta_box_1_image.localFile.childImageSharp.fluid}

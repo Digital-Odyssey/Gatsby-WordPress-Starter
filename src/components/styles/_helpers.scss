@@ -5,3 +5,12 @@
 .mt-10 {
   margin-top: 10px;
 }
+
+.line-break {
+  @include md-screen {
+    display: none;
+  }
+  @include sm-screen {
+    display: none;
+  }
+}

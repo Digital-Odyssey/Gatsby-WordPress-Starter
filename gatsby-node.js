@@ -55,6 +55,12 @@ exports.createPages = async ({ graphql, actions }) => {
             template
             title
             content
+            parent {
+              children {
+                id
+              }
+            }
+            wordpress_id
           }
         }
       }
@@ -170,22 +176,33 @@ exports.createPages = async ({ graphql, actions }) => {
   // and we use it for the slug to preserve url structure.
   // The Page ID is prefixed with 'PAGE_'
   allWordpressPage.edges.forEach(edge => {
-    // Gatsby uses Redux to manage its internal state.
-    // Plugins and sites can use functions like "createPage"
-    // to interact with Gatsby.
-    createPage({
-      // Each page is required to have a `path` as well
-      // as a template component. The `context` is
-      // optional but is often necessary so the template
-      // can query data specific to each page.
-      path: `/${edge.node.slug}`,
-      component: slash(
-        edge.node.template === "portfolio_under_content.php"
-          ? portfolioUnderContentTemplate
-          : pageTemplate
-      ),
-      context: edge.node, //edge.node contains all the data for our page
-    });
+    if (edge.node.status === "publish") {
+      // Gatsby uses Redux to manage its internal state.
+      // Plugins and sites can use functions like "createPage"
+      // to interact with Gatsby.
+      createPage({
+        // Each page is required to have a `path` as well
+        // as a template component. The `context` is
+        // optional but is often necessary so the template
+        // can query data specific to each page.
+        path: `/${edge.node.slug}`,
+        component: slash(
+          edge.node.template === "portfolio_under_content.php"
+            ? portfolioUnderContentTemplate
+            : pageTemplate
+        ),
+        context: {
+          id: edge.node.id,
+          slug: edge.node.slug,
+          status: edge.node.status,
+          template: edge.node.template,
+          title: edge.node.title,
+          content: edge.node.content,
+          parent: edge.node.parent,
+          wpId: edge.node.wordpress_id,
+        }, //edge.node contains all the data for our page
+      });
+    }
   });
 
   //-----WP POSTS

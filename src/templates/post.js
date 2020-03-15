@@ -27,46 +27,62 @@ const Post = ({ pageContext }) => {
   return (
     <Layout>
       <SEO title={pageContext.title} />
-      <h1 dangerouslySetInnerHTML={{ __html: pageContext.title }} />
-      <small className="post-date">
-        Posted: {pageContext.date} | Author:{" "}
-        <Link to={pageContext.author.path}>{pageContext.author.name}</Link>
-      </small>
-      <img
-        src={pageContext.source_url}
-        alt={pageContext.title}
-        className="mt-10 mb-30"
-      />
-      <p>
-        Posted in:{" "}
-        {pageContext.categories.map((cat, index) => (
-          <Link className="cat-link" key={index} to={`/archive/${cat.slug}`}>
-            {cat.name}{" "}
-          </Link>
-        ))}
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
-      <p>
-        {pageContext.tags && "Tagged in: "}
-        {pageContext.tags &&
-          pageContext.tags.map((tag, index) => (
-            <Link className="tag-link" key={index} to={`/tags/${tag.slug}`}>
-              {tag.name}{" "}
-            </Link>
-          ))}
-      </p>
-      <LinksWrapper>
-        {prev && (
-          <LinkBtn className="post-prev-link" to={`/post/${prev.slug}`}>
-            Prev
-          </LinkBtn>
-        )}
-        {next && (
-          <LinkBtn className="post-next-link" to={`/post/${next.slug}`}>
-            Next
-          </LinkBtn>
-        )}
-      </LinksWrapper>
+      <div className="container body">
+        <div className="row">
+          <div className="col-lg-12">
+            <h1 dangerouslySetInnerHTML={{ __html: pageContext.title }} />
+            <small className="post-date">
+              Posted: {pageContext.date} | Author:{" "}
+              <Link to={pageContext.author.path}>
+                {pageContext.author.name}
+              </Link>
+            </small>
+            <img
+              src={pageContext.source_url}
+              alt={pageContext.title}
+              className="mt-10 mb-30"
+            />
+            <p>
+              Posted in:{" "}
+              {pageContext.categories.map((cat, index) => (
+                <Link
+                  className="cat-link"
+                  key={index}
+                  to={`/archive/${cat.slug}`}
+                >
+                  {cat.name}{" "}
+                </Link>
+              ))}
+            </p>
+            <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
+            <p>
+              {pageContext.tags && "Tagged in: "}
+              {pageContext.tags &&
+                pageContext.tags.map((tag, index) => (
+                  <Link
+                    className="tag-link"
+                    key={index}
+                    to={`/tags/${tag.slug}`}
+                  >
+                    {tag.name}{" "}
+                  </Link>
+                ))}
+            </p>
+            <LinksWrapper>
+              {prev && (
+                <LinkBtn className="post-prev-link" to={`/post/${prev.slug}`}>
+                  Prev
+                </LinkBtn>
+              )}
+              {next && (
+                <LinkBtn className="post-next-link" to={`/post/${next.slug}`}>
+                  Next
+                </LinkBtn>
+              )}
+            </LinksWrapper>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };

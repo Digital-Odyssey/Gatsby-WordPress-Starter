@@ -12,18 +12,24 @@ const Tags = ({ data, pageContext }) => {
     <>
       <Layout>
         <SEO title="Archive" />
-        <h4>Posts tagged in "{pageContext.tagName}"</h4>
-        <div className="posts-wrapper">
-          {allWordpressPost.edges.map(post => (
-            <BlogPost post={post} />
-          ))}
+        <div className="container body">
+          <div className="row">
+            <div className="col-lg-12">
+              <h4>Posts tagged in "{pageContext.tagName}"</h4>
+              <div className="posts-wrapper">
+                {allWordpressPost.edges.map(post => (
+                  <BlogPost post={post} />
+                ))}
+              </div>
+              <GatsbyPagination
+                path={"tags"}
+                slug={tagSlug}
+                page={humanPageNumber}
+                totalPages={numberOfPages}
+              />
+            </div>
+          </div>
         </div>
-        <GatsbyPagination
-          path={"tags"}
-          slug={tagSlug}
-          page={humanPageNumber}
-          totalPages={numberOfPages}
-        />
       </Layout>
     </>
   );

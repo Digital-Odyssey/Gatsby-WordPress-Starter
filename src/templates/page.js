@@ -11,32 +11,35 @@ const PageContent = styled.article`
   margin: 20px 0 0 0;
 `;
 
-const Page = ({ data }) => (
-  <Layout>
-    <SEO title={data.currentPage.title} />
-    {data.currentPage.featured_media ? (
-      <PageHero
-        img={data.currentPage.featured_media.localFile.childImageSharp.fluid}
-      />
-    ) : null}
-    <Breadcrumbs parent={data.parent} />
-    <div className="container">
-      <div className="row" style={{ marginBottom: "40px" }}>
-        <Sidebar
-          parentChild={data.parentChildren}
-          currentPage={data.currentPage}
-          parent={data.parent}
-        >
-          {data.children}
-        </Sidebar>
-        <PageContent className="col-lg-9">
-          <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
-          <p dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
-        </PageContent>
+const Page = ({ data }) => {
+  console.log("parentChildren", data.parentChildren);
+  return (
+    <Layout>
+      <SEO title={data.currentPage.title} />
+      {data.currentPage.featured_media ? (
+        <PageHero
+          img={data.currentPage.featured_media.localFile.childImageSharp.fluid}
+        />
+      ) : null}
+      <Breadcrumbs parent={data.parent} />
+      <div className="container">
+        <div className="row" style={{ marginBottom: "40px" }}>
+          <Sidebar
+            parentChildren={data.parentChildren}
+            currentPage={data.currentPage}
+            parent={data.parent}
+          >
+            {data.children}
+          </Sidebar>
+          <PageContent className="col-lg-9">
+            <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
+            <p dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
+          </PageContent>
+        </div>
       </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default Page;
 
@@ -64,6 +67,8 @@ export const pageQuery = graphql`
           id
           title
           link
+          path
+          slug
         }
       }
     }
@@ -73,12 +78,15 @@ export const pageQuery = graphql`
           id
           title
           link
+          path
         }
       }
     }
     parent: wordpressPage(wordpress_id: { eq: $parent }) {
       title
       link
+      slug
+      path
     }
   }
 `;

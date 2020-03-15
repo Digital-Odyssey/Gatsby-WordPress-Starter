@@ -26,6 +26,31 @@ exports.createResolvers = ({ createResolvers }) => {
   createResolvers(resolvers);
 };
 
+exports.sourceNodes = ({ getNodes, actions }) => {
+  const { createNodeField } = actions;
+  const pageNodes = getNodes().filter(
+    node => node.internal.type === "wordpress__PAGE"
+  );
+
+  pageNodes.forEach(pageNode => {
+    let pathFragments = [];
+    let tmpNode = pageNode;
+    do {
+      pathFragments.push(tmpNode.slug);
+      tmpNode = pageNodes.find(
+        node => node.wordpress_id === tmpNode.wordpress_parent
+      );
+    } while (tmpNode);
+
+    const path = pathFragments.reverse().join("/");
+    createNodeField({
+      node: pageNode,
+      name: `path`,
+      value: path,
+    });
+  });
+};
+
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
 // access to any information necessary to programmatically
@@ -60,7 +85,11 @@ exports.createPages = async ({ graphql, actions }) => {
                 id
               }
             }
+            fields {
+              path
+            }
             wordpress_id
+            wordpress_parent
           }
         }
       }
@@ -185,7 +214,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // as a template component. The `context` is
         // optional but is often necessary so the template
         // can query data specific to each page.
-        path: `/${edge.node.slug}`,
+        path: `/${edge.node.fields.path}`,
         component: slash(
           edge.node.template === "portfolio_under_content.php"
             ? portfolioUnderContentTemplate
@@ -198,7 +227,7 @@ exports.createPages = async ({ graphql, actions }) => {
           template: edge.node.template,
           title: edge.node.title,
           content: edge.node.content,
-          parent: edge.node.parent,
+          parent: edge.node.wordpress_parent,
           wpId: edge.node.wordpress_id,
         }, //edge.node contains all the data for our page
       });

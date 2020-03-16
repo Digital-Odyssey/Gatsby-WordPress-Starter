@@ -139,6 +139,7 @@ module.exports = {
           "**/portfolio",
           "**/users",
           "**/comments",
+          "**/widgets",
           "/*/*/logo",
           "/*/*/favicon",
         ],

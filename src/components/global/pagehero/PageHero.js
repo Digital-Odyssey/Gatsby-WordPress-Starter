@@ -1,18 +1,23 @@
 import React from "react";
-import Img from "gatsby-image";
-import styled from "styled-components";
 import PropTypes from "prop-types";
+import { HeaderTitle } from "./PageHeroStyles";
 
-const StyledImg = styled(Img)`
-  height: 250px;
-`;
+const PageHero = ({ img, title }) => {
+  const divStyle = {
+    height: "250px",
+    overflow: "hidden",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+    backgroundImage: "url(" + img + ")",
+  };
 
-const PageHero = ({ img }) => {
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col" style={{ padding: 0 }}>
-          <StyledImg fluid={img} />
+    <div style={divStyle}>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <HeaderTitle>{title}</HeaderTitle>
+          </div>
         </div>
       </div>
     </div>
@@ -20,7 +25,8 @@ const PageHero = ({ img }) => {
 };
 
 PageHero.propTypes = {
-  img: PropTypes.object,
+  img: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default PageHero;

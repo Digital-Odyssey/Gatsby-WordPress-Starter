@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "gatsby";
-import { FaEnvelope, FaPager } from "react-icons/fa";
+import { FaEnvelope, FaServicestack } from "react-icons/fa";
 
 import { SidebarWrapper, SidebarMenu } from "./SidebarStyles";
 
@@ -11,14 +11,14 @@ const Sidebar = ({ children, parentChildren, currentPage, parent }) => {
       <Fragment>
         <li className="sidebar-menu-header">
           <FaEnvelope />
-          <span>Mailing list</span>
+          <span>Did you know?</span>
         </li>
       </Fragment>
     ) : (
       //page with children
       <Fragment>
         <li className="sidebar-menu-header">
-          <FaPager />
+          <FaServicestack />{" "}
           <span dangerouslySetInnerHTML={{ __html: currentPage.title }} />
         </li>
         {children.edges.map(child => (
@@ -36,7 +36,7 @@ const Sidebar = ({ children, parentChildren, currentPage, parent }) => {
     return (
       <Fragment>
         <li className="sidebar-menu-header">
-          <FaPager />{" "}
+          <FaServicestack />{" "}
           <span dangerouslySetInnerHTML={{ __html: parent.title }} />
         </li>
         {parentChildren.edges.map(child => (
@@ -60,7 +60,7 @@ const Sidebar = ({ children, parentChildren, currentPage, parent }) => {
   };
 
   return (
-    <SidebarWrapper className="col-lg-3">
+    <SidebarWrapper>
       <SidebarMenu>
         {currentPage.wordpress_parent === 0
           ? getParentContent()

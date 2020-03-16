@@ -12,13 +12,13 @@ const PortfolioTemplate = ({ data, pageContext }) => {
     <Layout>
       <SEO title={pageContext.title} />
       <PageHero
-        img={data.currentPage.acf.page_hero_img.localFile.childImageSharp.fluid}
+        img={data.currentPage.acf.page_hero_img.source_url}
+        title={pageContext.title}
       />
       <Breadcrumbs parent={data.parent} />
-      <div className="container body">
+      <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <h1 dangerouslySetInnerHTML={{ __html: pageContext.title }} />
             <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
             <PortfolioItems />
           </div>
@@ -39,13 +39,7 @@ export const pageQuery = graphql`
     currentPage: wordpressPage(id: { eq: $id }) {
       acf {
         page_hero_img {
-          localFile {
-            childImageSharp {
-              fluid(quality: 100, maxWidth: 4000) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
+          source_url
         }
       }
     }

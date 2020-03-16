@@ -17,21 +17,23 @@ const Page = ({ data }) => {
       <SEO title={data.currentPage.title} />
       {data.currentPage.featured_media ? (
         <PageHero
-          img={
-            data.currentPage.acf.page_hero_img.localFile.childImageSharp.fluid
-          }
+          img={data.currentPage.acf.page_hero_img.source_url}
+          title={data.currentPage.title}
         />
       ) : null}
       <Breadcrumbs parent={data.parent} />
       <div className="container">
         <div className="row" style={{ marginBottom: "40px" }}>
-          <Sidebar
-            parentChildren={data.parentChildren}
-            currentPage={data.currentPage}
-            parent={data.parent}
-          >
-            {data.children}
-          </Sidebar>
+          <div className="col-lg-3">
+            <Sidebar
+              parentChildren={data.parentChildren}
+              currentPage={data.currentPage}
+              parent={data.parent}
+            >
+              {data.children}
+            </Sidebar>
+          </div>
+
           <PageContent className="col-lg-9">
             <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
             <p dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
@@ -52,13 +54,7 @@ export const pageQuery = graphql`
       wordpress_parent
       acf {
         page_hero_img {
-          localFile {
-            childImageSharp {
-              fluid(quality: 100, maxWidth: 4000) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
+          source_url
         }
       }
       featured_media {

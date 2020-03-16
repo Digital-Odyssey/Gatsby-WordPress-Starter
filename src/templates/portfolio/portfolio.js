@@ -22,7 +22,8 @@ const Portfolio = ({ data, pageContext }) => {
     <Layout>
       <SEO title={pageContext.title} />
       <PageHero
-        img={data.currentPage.acf.page_hero_img.localFile.childImageSharp.fluid}
+        img={data.currentPage.acf.page_hero_img.source_url}
+        title={pageContext.title}
       />
       <Breadcrumbs parent={{ title: "Portfolio", path: "/portfolio" }} />
       <div className="container body">
@@ -58,13 +59,7 @@ export const pageQuery = graphql`
     currentPage: wordpressWpPortfolio(id: { eq: $id }) {
       acf {
         page_hero_img {
-          localFile {
-            childImageSharp {
-              fluid(quality: 100, maxWidth: 4000) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
+          source_url
         }
       }
     }

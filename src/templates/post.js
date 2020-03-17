@@ -23,10 +23,6 @@ const LinkBtn = styled(Link)`
   }
 `;
 
-const PostTitle = styled.h1`
-  font-size: 24px;
-`;
-
 const Post = ({ data, pageContext }) => {
   const { next, prev } = pageContext;
   return (

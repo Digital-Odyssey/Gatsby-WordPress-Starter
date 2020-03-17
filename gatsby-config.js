@@ -145,7 +145,7 @@ module.exports = {
           "/*/*/favicon",
         ],
         // Blacklisted routes using glob patterns
-        excludedRoutes: [],
+        excludedRoutes: ["wp/v2/settings*", "wp/v2/themes*"],
         // Set this to keep media sizes.
         // This option is particularly useful in case you need access to
         // URLs for thumbnails, or any other media detail.

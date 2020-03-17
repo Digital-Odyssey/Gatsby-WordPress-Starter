@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import { SEO } from "../../components";
 import { GatsbyPagination } from "../../components/pagination";
 import { BlogPost } from "../../components/blog";
+import { PageHero } from "../../components/global/pagehero";
 
 const Tags = ({ data, pageContext }) => {
   const { tagSlug, humanPageNumber, numberOfPages } = pageContext;
@@ -11,11 +12,16 @@ const Tags = ({ data, pageContext }) => {
   return (
     <>
       <Layout>
-        <SEO title="Archive" />
+        <SEO title="Tags" />
+        {data.tagHeroImage.source_url !== "" ? (
+          <PageHero
+            img={data.tagHeroImage.source_url}
+            title={`Posts tagged in "${pageContext.tagName}"`}
+          />
+        ) : null}
         <div className="container body">
           <div className="row">
             <div className="col-lg-12">
-              <h4>Posts tagged in "{pageContext.tagName}"</h4>
               <div className="posts-wrapper">
                 {allWordpressPost.edges.map(post => (
                   <BlogPost post={post} />
@@ -73,6 +79,12 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    tagHeroImage: wordpressWpApiCustomizerCustomizer(
+      name: { eq: "tag_hero_image" }
+    ) {
+      source_url
+      name
     }
   }
 `;

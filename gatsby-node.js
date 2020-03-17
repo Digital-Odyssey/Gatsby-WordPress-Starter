@@ -334,6 +334,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/post/${node.slug}`,
       component: slash(singlePostTemplate),
       context: {
+        id: node.id,
         title: node.title,
         content: node.content,
         date: node.date,

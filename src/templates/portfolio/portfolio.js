@@ -21,10 +21,12 @@ const Portfolio = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title={pageContext.title} />
-      <PageHero
-        img={data.currentPage.acf.page_hero_img.source_url}
-        title={pageContext.title}
-      />
+      {data.currentPage.acf.page_hero_img.source_url !== "" ? (
+        <PageHero
+          img={data.currentPage.acf.page_hero_img.source_url}
+          title={pageContext.title}
+        />
+      ) : null}
       <Breadcrumbs parent={{ title: "Portfolio", path: "/portfolio" }} />
       <div className="container body">
         <div className="row">

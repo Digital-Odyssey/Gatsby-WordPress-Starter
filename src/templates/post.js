@@ -1,8 +1,9 @@
 import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 import styled from "styled-components";
+import { PageHero } from "../components/global/pagehero";
 
 const LinksWrapper = styled.div`
   display: flex;
@@ -22,15 +23,24 @@ const LinkBtn = styled(Link)`
   }
 `;
 
-const Post = ({ pageContext }) => {
+const PostTitle = styled.h1`
+  font-size: 24px;
+`;
+
+const Post = ({ data, pageContext }) => {
   const { next, prev } = pageContext;
   return (
     <Layout>
       <SEO title={pageContext.title} />
+      {data.currentPage.acf.page_hero_img.source_url !== "" ? (
+        <PageHero
+          img={data.currentPage.acf.page_hero_img.source_url}
+          title={pageContext.title}
+        />
+      ) : null}
       <div className="container body">
         <div className="row">
           <div className="col-lg-12">
-            <h1 dangerouslySetInnerHTML={{ __html: pageContext.title }} />
             <small className="post-date">
               Posted: {pageContext.date} | Author:{" "}
               <Link to={pageContext.author.path}>
@@ -56,8 +66,8 @@ const Post = ({ pageContext }) => {
             </p>
             <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
             <p>
-              {pageContext.tags && "Tagged in: "}
-              {pageContext.tags &&
+              {pageContext.tags[0].id !== "undefined" ? "Tagged in: " : ""}
+              {pageContext.tags[0].id !== "undefined" &&
                 pageContext.tags.map((tag, index) => (
                   <Link
                     className="tag-link"
@@ -88,3 +98,16 @@ const Post = ({ pageContext }) => {
 };
 
 export default Post;
+
+export const pageQuery = graphql`
+  query($id: String) {
+    currentPage: wordpressPost(id: { eq: $id }) {
+      id
+      acf {
+        page_hero_img {
+          source_url
+        }
+      }
+    }
+  }
+`;

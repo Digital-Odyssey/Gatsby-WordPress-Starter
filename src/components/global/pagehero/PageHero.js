@@ -16,7 +16,7 @@ const PageHero = ({ img, title }) => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <HeaderTitle>{title}</HeaderTitle>
+            <HeaderTitle dangerouslySetInnerHTML={{ __html: title }} />
           </div>
         </div>
       </div>

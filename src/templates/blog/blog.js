@@ -1,13 +1,18 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Layout from "../../components/layout";
 import { SEO } from "../../components";
 import { Pagination } from "../../components/pagination";
 import { BlogPost, BlogSidebar } from "../../components/blog";
+import { PageHero } from "../../components/global/pagehero";
 
-const Blog = ({ pageContext }) => {
+const Blog = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title="Blog" />
+      {data.blogHeroImage.source_url !== "" ? (
+        <PageHero img={data.blogHeroImage.source_url} title={"Blog"} />
+      ) : null}
       <div className="container body">
         <div className="row">
           <div className="col-lg-9">
@@ -26,3 +31,14 @@ const Blog = ({ pageContext }) => {
 };
 
 export default Blog;
+
+export const pageQuery = graphql`
+  query {
+    blogHeroImage: wordpressWpApiCustomizerCustomizer(
+      name: { eq: "blog_hero_image" }
+    ) {
+      source_url
+      name
+    }
+  }
+`;

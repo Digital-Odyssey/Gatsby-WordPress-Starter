@@ -4,6 +4,7 @@ import { SEO } from "../../components";
 import { GatsbyPagination } from "../../components/pagination";
 import { BlogPost } from "../../components/blog";
 import Layout from "../../components/layout";
+import { PageHero } from "../../components/global/pagehero";
 
 const Archive = ({ data, pageContext }) => {
   const { catSlug, humanPageNumber, numberOfPages } = pageContext;
@@ -13,10 +14,15 @@ const Archive = ({ data, pageContext }) => {
     <>
       <Layout>
         <SEO title="Archive" />
+        {data.archiveHeroImage.source_url !== "" ? (
+          <PageHero
+            img={data.archiveHeroImage.source_url}
+            title={`Posts archived in "${pageContext.catName}"`}
+          />
+        ) : null}
         <div className="container body">
           <div className="row">
             <div className="col-lg-12">
-              <h4>Archived posts in "{pageContext.catName}"</h4>
               <div className="posts-wrapper">
                 {allWordpressPost.edges.map(post => (
                   <BlogPost post={post} />
@@ -74,6 +80,12 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    archiveHeroImage: wordpressWpApiCustomizerCustomizer(
+      name: { eq: "archive_hero_image" }
+    ) {
+      source_url
+      name
     }
   }
 `;

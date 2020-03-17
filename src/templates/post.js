@@ -54,7 +54,7 @@ const Post = ({ data, pageContext }) => {
                 <Link
                   className="cat-link"
                   key={index}
-                  to={`/archive/${cat.slug}`}
+                  to={`/category/${cat.slug}`}
                 >
                   {cat.name}{" "}
                 </Link>
@@ -68,7 +68,7 @@ const Post = ({ data, pageContext }) => {
                   <Link
                     className="tag-link"
                     key={index}
-                    to={`/tags/${tag.slug}`}
+                    to={`/tag/${tag.slug}`}
                   >
                     {tag.name}{" "}
                   </Link>

@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "gatsby";
 import { FaEnvelope, FaServicestack } from "react-icons/fa";
-
 import { SidebarWrapper, SidebarMenu } from "./SidebarStyles";
 
 const Sidebar = ({ children, parentChildren, currentPage, parent }) => {

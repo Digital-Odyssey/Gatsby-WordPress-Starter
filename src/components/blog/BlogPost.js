@@ -18,7 +18,7 @@ const BlogPost = ({ post }) => {
       <p>
         Posted in:{" "}
         {post.node.categories.map((cat, index) => (
-          <Link className="cat-link" key={index} to={`/archive/${cat.slug}`}>
+          <Link className="cat-link" key={index} to={`/category/${cat.slug}`}>
             {cat.name}{" "}
           </Link>
         ))}
@@ -28,7 +28,7 @@ const BlogPost = ({ post }) => {
         {post.node.tags[0].id !== "undefined" ? "Tagged in: " : ""}
         {post.node.tags[0].id !== "undefined" &&
           post.node.tags.map((tag, index) => (
-            <Link className="tag-link" key={index} to={`/tags/${tag.slug}`}>
+            <Link className="tag-link" key={index} to={`/tag/${tag.slug}`}>
               {tag.name}{" "}
             </Link>
           ))}

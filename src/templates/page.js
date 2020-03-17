@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { Sidebar } from "../components/global/sidebar";
+import { Sidebar } from "../components/sidebar";
 import { PageHero } from "../components/global/pagehero";
 import { Breadcrumbs } from "../components/global/breadcrumbs";
 

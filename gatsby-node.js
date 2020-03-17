@@ -285,7 +285,7 @@ exports.createPages = async ({ graphql, actions }) => {
         createPage,
         items: filteredPosts,
         itemsPerPage: 5,
-        pathPrefix: `/archive/${catNode.slug}`,
+        pathPrefix: `/category/${catNode.slug}`,
         component: slash(archiveTemplate),
         context: {
           catId: catNode.id,
@@ -313,7 +313,7 @@ exports.createPages = async ({ graphql, actions }) => {
         createPage,
         items: filteredPosts,
         itemsPerPage: 5,
-        pathPrefix: `/tags/${tagNode.slug}`,
+        pathPrefix: `/tag/${tagNode.slug}`,
         component: slash(tagsTemplate),
         context: {
           tagId: tagNode.id,

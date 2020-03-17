@@ -139,8 +139,8 @@ module.exports = {
           "**/portfolio",
           "**/users",
           "**/comments",
-          "**/widgets",
           "**/customizer",
+          "**/sidebars",
           "/*/*/logo",
           "/*/*/favicon",
         ],
@@ -186,6 +186,10 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
+            variants: [`400`, `600`, `700`],
+          },
+          {
+            family: `Montserrat`,
             variants: [`400`, `600`, `700`],
           },
         ],

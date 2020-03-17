@@ -3,8 +3,9 @@ import { graphql } from "gatsby";
 import Layout from "../../components/layout";
 import { SEO } from "../../components";
 import { Pagination } from "../../components/pagination";
-import { BlogPost, BlogSidebar } from "../../components/blog";
+import { BlogPost } from "../../components/blog";
 import { PageHero } from "../../components/global/pagehero";
+import { GlobalSidebar } from "../../components/global/sidebar";
 
 const Blog = ({ data, pageContext }) => {
   return (
@@ -22,7 +23,7 @@ const Blog = ({ data, pageContext }) => {
             <Pagination pageContext={pageContext} path={"/blog"} />
           </div>
           <div className="col-lg-3">
-            <BlogSidebar />
+            <GlobalSidebar widgets={data.widgets} />
           </div>
         </div>
       </div>
@@ -39,6 +40,18 @@ export const pageQuery = graphql`
     ) {
       source_url
       name
+    }
+    widgets: allWordpressWpSidebarsSidebars(
+      filter: { parent_sidebar: { eq: "blog-sidebar" } }
+    ) {
+      edges {
+        node {
+          id
+          name
+          rendered
+          parent_sidebar
+        }
+      }
     }
   }
 `;

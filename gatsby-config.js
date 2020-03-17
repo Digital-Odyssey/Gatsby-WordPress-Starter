@@ -5,6 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Gatsby WP Starter`,
+    siteUrl: `https://thirsty-fermi-fdeecf.netlify.com`,
     description: `This starter project extends off the base Gatsby starter with additional features ready for production.`,
     author: `@pulsarmedia`,
   },

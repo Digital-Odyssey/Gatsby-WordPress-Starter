@@ -18,8 +18,8 @@ const NewsPost = ({ post }) => {
           fluid={post.node.featured_media.localFile.childImageSharp.fluid}
         />
         <NewPostArticleDetails>
-          <Img
-            fluid={post.node.author.avatar_urls.wordpress_96}
+          <img
+            src={post.node.author.avatar_urls.wordpress_96}
             alt={post.node.author.name}
           />
           <div>

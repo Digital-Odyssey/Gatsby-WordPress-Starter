@@ -31,6 +31,20 @@
   vertical-align: 0.175em !important;
 }
 
+.dropdown-item {
+  padding: 0.45rem 1.5rem;
+
+  &:hover {
+    background-color: orange !important;
+    color: white !important;
+  }
+}
+
+.dropdown-menu {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
 /* Collapsed state */
 .navbar-toggler.collapsed .navbar-toggler-icon::before {
   content: "";

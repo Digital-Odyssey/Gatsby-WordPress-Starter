@@ -9,13 +9,17 @@ article {
   display: block;
 }
 
+article img {
+  width: 100%;
+}
+
 .cat-link,
 .tag-link {
   text-decoration: none;
-  color: blue;
+  color: #ff9600;
 
   &:hover {
-    color: red;
+    color: #ffb400;
   }
 }
 

@@ -1,10 +1,29 @@
 import React from "react";
 import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const HeaderTag = styled.h1`
+  font-size: 1.8rem;
+`;
+
+const HeaderLink = styled.a`
+  color: black;
+
+  :hover {
+    color: #ff9600;
+  }
+`;
 
 const BlogPost = ({ post }) => {
   return (
     <article key={post.node.wordpress_id}>
-      <h1 dangerouslySetInnerHTML={{ __html: post.node.title }} />
+      <HeaderTag>
+        <HeaderLink
+          href={`/post/${post.node.slug}`}
+          dangerouslySetInnerHTML={{ __html: post.node.title }}
+        />
+      </HeaderTag>
       <small className="post-date">
         Posted: {post.node.date} | Author:{" "}
         <Link to={post.node.author.path}>{post.node.author.name}</Link>
@@ -40,6 +59,10 @@ const BlogPost = ({ post }) => {
       </div>
     </article>
   );
+};
+
+BlogPost.propTypes = {
+  post: PropTypes.object,
 };
 
 export default BlogPost;

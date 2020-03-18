@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../components/layout";
 import { SEO } from "../../components";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Profile = styled.div`
   margin: 20px 0 0;
@@ -40,6 +41,10 @@ const Author = ({ pageContext }) => {
       </div>
     </Layout>
   );
+};
+
+Author.propTypes = {
+  pageContext: PropTypes.object,
 };
 
 export default Author;

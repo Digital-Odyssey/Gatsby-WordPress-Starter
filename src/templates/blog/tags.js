@@ -5,6 +5,7 @@ import { SEO } from "../../components";
 import { GatsbyPagination } from "../../components/pagination";
 import { BlogPost } from "../../components/blog";
 import { PageHero } from "../../components/global/pagehero";
+import PropTypes from "prop-types";
 
 const Tags = ({ data, pageContext }) => {
   const { tagSlug, humanPageNumber, numberOfPages } = pageContext;
@@ -23,8 +24,8 @@ const Tags = ({ data, pageContext }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="posts-wrapper">
-                {allWordpressPost.edges.map(post => (
-                  <BlogPost post={post} />
+                {allWordpressPost.edges.map((post, index) => (
+                  <BlogPost key={index} post={post} />
                 ))}
               </div>
               <GatsbyPagination
@@ -39,6 +40,11 @@ const Tags = ({ data, pageContext }) => {
       </Layout>
     </>
   );
+};
+
+Tags.propTypes = {
+  data: PropTypes.object,
+  pageContext: PropTypes.object,
 };
 
 export default Tags;

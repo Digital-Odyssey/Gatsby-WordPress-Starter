@@ -190,6 +190,7 @@ export const Button = styled.button`
   transition: all 0.2s;
 
   :hover {
+    transform: scale(1.2);
     cursor: pointer;
   }
 `;

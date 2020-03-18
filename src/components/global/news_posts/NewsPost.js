@@ -7,6 +7,7 @@ import {
   SmallText,
   ReadMoreBtn,
 } from "./NewsPostStyles";
+import PropTypes from "prop-types";
 
 const NewsPost = ({ post }) => {
   return (
@@ -40,6 +41,10 @@ const NewsPost = ({ post }) => {
       </NewsPostArticle>
     </Fragment>
   );
+};
+
+NewsPost.propTypes = {
+  post: PropTypes.object,
 };
 
 export default NewsPost;

@@ -1,0 +1,38 @@
+/* Widgets */
+
+div.tagcloud {
+  margin-bottom: 30px;
+}
+
+div.wp-video {
+  margin-bottom: 30px;
+}
+
+div.tagcloud a {
+  background-color: #ff9600;
+  color: white;
+  padding: 8px 14px;
+  margin: 5px 0 0;
+  font-size: 14px !important;
+  display: inline-block;
+  font-family: "Open sans";
+  font-weight: 400;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+
+div.tagcloud a:hover {
+  background-color: #ffb400;
+  color: white;
+}
+
+div.textwidget {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "Open sans";
+  line-height: 1.7;
+}
+
+div.pm-video-wrapper {
+  margin: 15px 0 0;
+}

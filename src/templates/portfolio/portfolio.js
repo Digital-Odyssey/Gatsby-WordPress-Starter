@@ -5,6 +5,7 @@ import styled from "styled-components";
 import SEO from "../../components/seo";
 import { PageHero } from "../../components/global/pagehero";
 import { Breadcrumbs } from "../../components/global/breadcrumbs";
+import PropTypes from "prop-types";
 
 const FeaturedImage = styled.img`
   margin: 16px 0;
@@ -51,6 +52,11 @@ const Portfolio = ({ data, pageContext }) => {
       </div>
     </Layout>
   );
+};
+
+Portfolio.propTypes = {
+  data: PropTypes.object,
+  pageContext: PropTypes.object,
 };
 
 export default Portfolio;

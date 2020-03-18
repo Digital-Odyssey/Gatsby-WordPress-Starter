@@ -7,11 +7,6 @@ export const StyledImg = styled(Img)`
     -webkit-transition: all 0.3s !important;
     transition: all 0.3s !important;
     z-index: 1;
-    max-height: 100px;
-
-    @media (min-width: 768px) {
-      max-height: 300px;
-    }
   }
 `;
 
@@ -36,9 +31,8 @@ export const CTAImage = styled.div`
     width: 100%;
   }
 
-  max-height: 100px;
   @media (min-width: 768px) {
-    max-height: 300px;
+    height: auto;
   }
 `;
 
@@ -46,8 +40,8 @@ export const CTAImageTextWrapper = styled.div`
   position: absolute;
   color: #fff;
   top: 0px;
-  width: calc(100% - 30px);
-  height: calc(100% - 20px);
+  width: 100%;
+  height: 100%;
   z-index: 10;
   display: flex;
   align-items: center;

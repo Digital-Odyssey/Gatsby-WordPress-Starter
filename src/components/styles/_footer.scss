@@ -1,0 +1,29 @@
+/* Widgets */
+.container.fat-footer {
+  margin-top: 3rem;
+  padding: 2rem 15px 3rem;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Montserrat";
+  color: white;
+}
+
+.container.fat-footer div.textwidget {
+  margin: 30px 0 0;
+}
+
+.container.fat-footer div.tagcloud {
+  margin: 30px 0 0;
+}
+
+.container.fat-footer div.pm-video-wrapper {
+  margin: 30px 0 0;
+}
+
+.container.fat-footer div.textwidget a {
+  color: #ffb400;
+
+  &:hover {
+    color: #ff9600;
+  }
+}

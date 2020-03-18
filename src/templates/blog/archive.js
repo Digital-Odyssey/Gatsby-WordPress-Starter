@@ -5,6 +5,7 @@ import { GatsbyPagination } from "../../components/pagination";
 import { BlogPost } from "../../components/blog";
 import Layout from "../../components/layout";
 import { PageHero } from "../../components/global/pagehero";
+import PropTypes from "prop-types";
 
 const Archive = ({ data, pageContext }) => {
   const { catSlug, humanPageNumber, numberOfPages } = pageContext;
@@ -24,8 +25,8 @@ const Archive = ({ data, pageContext }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="posts-wrapper">
-                {allWordpressPost.edges.map(post => (
-                  <BlogPost post={post} />
+                {allWordpressPost.edges.map((post, index) => (
+                  <BlogPost key={index} post={post} />
                 ))}
               </div>
               <GatsbyPagination
@@ -40,6 +41,11 @@ const Archive = ({ data, pageContext }) => {
       </Layout>
     </>
   );
+};
+
+Archive.propTypes = {
+  data: PropTypes.object,
+  pageContext: PropTypes.object,
 };
 
 export default Archive;

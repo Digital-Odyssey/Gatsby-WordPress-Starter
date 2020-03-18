@@ -18,7 +18,8 @@ const LinkBtn = styled(Link)`
   color: #aaa;
 
   :hover {
-    background-color: #ccc;
+    background-color: #ff9600;
+    border: 1px solid #ff9600;
     color: white;
   }
 `;

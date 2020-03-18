@@ -6,6 +6,7 @@ import { Pagination } from "../../components/pagination";
 import { BlogPost } from "../../components/blog";
 import { PageHero } from "../../components/global/pagehero";
 import { GlobalSidebar } from "../../components/global/sidebar";
+import PropTypes from "prop-types";
 
 const Blog = ({ data, pageContext }) => {
   return (
@@ -29,6 +30,11 @@ const Blog = ({ data, pageContext }) => {
       </div>
     </Layout>
   );
+};
+
+Blog.propTypes = {
+  data: PropTypes.object,
+  pageContext: PropTypes.object,
 };
 
 export default Blog;

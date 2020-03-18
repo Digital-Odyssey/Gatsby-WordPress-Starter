@@ -7,6 +7,7 @@ import {
   CTAImageText,
   CTAImageOverlay,
 } from "./CTAImagesStyles";
+import PropTypes from "prop-types";
 
 const CTA = ({ image, link, text }) => (
   <CTAImage>
@@ -19,5 +20,11 @@ const CTA = ({ image, link, text }) => (
     </a>
   </CTAImage>
 );
+
+CTA.propTypes = {
+  image: PropTypes.object,
+  link: PropTypes.string,
+  text: PropTypes.string,
+};
 
 export default CTA;

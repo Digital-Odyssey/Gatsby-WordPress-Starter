@@ -65,7 +65,9 @@ export const ReadMoreBtn = styled.a`
   border-radius: 6px;
   padding: 0.5rem 1rem;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 0.8rem;
+  font-family: "Open sans";
+  font-weight: 600 !important;
   margin: 10px 0 0;
   display: inline-block;
   transition: all 0.3s;

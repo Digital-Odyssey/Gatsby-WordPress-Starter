@@ -27,6 +27,18 @@ const Layout = ({ children }) => {
               }
             }
           }
+          allWordpressWpSidebarsSidebars(
+            filter: { parent_sidebar: { eq: "footer-sidebar" } }
+          ) {
+            edges {
+              node {
+                id
+                name
+                rendered
+                parent_sidebar
+              }
+            }
+          }
         }
       `}
       render={props => (
@@ -41,7 +53,7 @@ const Layout = ({ children }) => {
           </Helmet>
           <Header />
           {children}
-          <Footer />
+          <Footer widgets={props.allWordpressWpSidebarsSidebars} />
         </div>
       )}
     />

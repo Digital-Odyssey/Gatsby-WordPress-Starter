@@ -18,8 +18,17 @@
   }
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+  color: orange !important;
+}
+
 .navbar-toggler-icon {
   background: none !important;
+}
+
+.dropdown-toggle::after {
+  margin-left: 0.355em !important;
+  vertical-align: 0.175em !important;
 }
 
 /* Collapsed state */

@@ -20,20 +20,34 @@ export const SidebarMenu = styled.ul`
   }
 
   li {
-    margin: 0 0 5px 25px;
+    margin: 0 0 5px 15px;
     color: #000;
-    font-family: "Teko", Arial;
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 1px;
+    font-family: "Open sans";
+    font-weight: 600;
+
+    a {
+      color: #292929;
+      background-color: #eee;
+      display: block;
+      padding: 7px 10px;
+      border-radius: 6px 0 6px 0;
+    }
 
     a:hover {
-      color: #d22e26;
+      background-color: #292929;
+      color: white;
     }
   }
 
-  .sidebar-highlighted {
-    color: #d22e26;
+  .sidebar-highlighted span {
+    background-color: #292929;
+    color: white;
+    border-radius: 6px 0 6px 0;
+    display: block;
+    padding: 7px 10px;
   }
 
   p {
@@ -43,6 +57,7 @@ export const SidebarMenu = styled.ul`
 
     a {
       font-weight: 800;
+      font-family: "Montserrat";
     }
   }
 

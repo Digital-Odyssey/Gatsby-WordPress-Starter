@@ -35,7 +35,7 @@ export const HeroSlide = styled.div`
     transition: all 400ms cubic-bezier(0.645, 0.045, 0.355, 1); /* easeInOutExpo */
 
     .hero-header {
-      font-family: "Teko", sans-serif;
+      font-family: "Montserrat";
       color: #fff;
       font-size: 2rem;
       font-weight: 800;
@@ -58,13 +58,13 @@ export const HeroSlide = styled.div`
       }
 
       @media (min-width: 1200px) {
-        font-size: 6rem;
+        font-size: 5rem;
         line-height: 6rem;
       }
     }
 
     .hero-text {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Montserrat";
       text-align: center;
       font-size: 0.9rem;
       line-height: 20px;
@@ -179,9 +179,9 @@ export const Button = styled.button`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fff;
-  font-size: 20px;
-  opacity: 0.7;
+  background: rgba(0, 0, 0, 0);
+  font-size: 30px;
+  color: #ffb400;
   border: 0;
   outline: none;
   border-radius: 50px;
@@ -190,8 +190,6 @@ export const Button = styled.button`
   transition: all 0.2s;
 
   :hover {
-    transform: scale(1.1);
-    opacity: 0.8;
     cursor: pointer;
   }
 `;

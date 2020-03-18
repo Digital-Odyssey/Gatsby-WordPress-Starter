@@ -23,12 +23,16 @@ const LinkBtn = styled(Link)`
   }
 `;
 
+const PostImg = styled.img`
+  width: 100%;
+`;
+
 const Post = ({ data, pageContext }) => {
   const { next, prev } = pageContext;
   return (
     <Layout>
       <SEO title={pageContext.title} />
-      {data.currentPage.acf.page_hero_img.source_url !== "" ? (
+      {data.currentPage.acf.page_hero_img.source_url !== null ? (
         <PageHero
           img={data.currentPage.acf.page_hero_img.source_url}
           title={pageContext.title}
@@ -43,7 +47,7 @@ const Post = ({ data, pageContext }) => {
                 {pageContext.author.name}
               </Link>
             </small>
-            <img
+            <PostImg
               src={pageContext.source_url}
               alt={pageContext.title}
               className="mt-10 mb-30"

@@ -7,7 +7,6 @@ import { PageHero } from "../../components/global/pagehero";
 import { Breadcrumbs } from "../../components/global/breadcrumbs";
 
 const FeaturedImage = styled.img`
-  max-width: 400px;
   margin: 16px 0;
 `;
 

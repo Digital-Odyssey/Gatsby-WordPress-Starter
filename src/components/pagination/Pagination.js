@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import {
+  FaAngleRight,
+  FaAngleLeft,
+  FaAngleDoubleRight,
+  FaAngleDoubleLeft,
+} from "react-icons/fa";
 
 const PaginationWrapper = styled.div`
   display: flex;
@@ -8,21 +14,26 @@ const PaginationWrapper = styled.div`
 `;
 
 const PageNumberWrapper = styled.div`
-  display: flex;
-  background: ${props => (props.isCurrentPage ? "red" : "white")};
   color: white;
+  border-radius: 100%;
+  transition: all 0.3s;
 `;
 
 const PageNumber = styled(Link)`
   padding: 8px 12px;
   text-decoration: none;
-  border: 1px solid #eee;
+  border-radius: 100%;
+  overflow: hidden;
   font-size: 10px;
+  margin: 0 1px;
+  width: 30px;
+  height: 30px;
+  line-height: 1;
+  background-color: ${props => (props.isCurrentPage ? "#ffb400" : "#eee")};
   color: ${props => (props.isCurrentPage ? "white" : "black")};
-  transition: all 0.3s;
   :hover {
-    background: red;
     color: white;
+    background: #ff9600;
   }
 `;
 
@@ -30,7 +41,9 @@ const pagination = ({ pageContext, path }) => {
   return (
     <PaginationWrapper>
       {pageContext.currentPage > 1 ? (
-        <PageNumber to={path}>{"<<"}</PageNumber>
+        <PageNumber to={path}>
+          <FaAngleDoubleLeft />
+        </PageNumber>
       ) : (
         ""
       )}
@@ -42,7 +55,7 @@ const pagination = ({ pageContext, path }) => {
               : `${path}/${pageContext.currentPage - 1}`
           }
         >
-          {"<"}
+          <FaAngleLeft />
         </PageNumber>
       ) : (
         ""
@@ -69,7 +82,7 @@ const pagination = ({ pageContext, path }) => {
 
       {pageContext.currentPage < pageContext.numberOfPages ? (
         <PageNumber to={`${path}/${pageContext.currentPage + 1}`}>
-          {">"}
+          <FaAngleRight />
         </PageNumber>
       ) : (
         ""
@@ -77,7 +90,7 @@ const pagination = ({ pageContext, path }) => {
 
       {pageContext.currentPage < pageContext.numberOfPages ? (
         <PageNumber to={`${path}/${pageContext.numberOfPages}`}>
-          {">>"}
+          <FaAngleDoubleRight />
         </PageNumber>
       ) : (
         ""

@@ -16,14 +16,7 @@ const PortfolioTemplate = ({ data, pageContext }) => {
         title={pageContext.title}
       />
       <Breadcrumbs parent={data.parent} />
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
-            <PortfolioItems />
-          </div>
-        </div>
-      </div>
+      <PortfolioItems />
     </Layout>
   );
 };

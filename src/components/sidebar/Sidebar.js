@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "gatsby";
-import { FaEnvelope, FaServicestack } from "react-icons/fa";
+import { FaEnvelope, FaReact } from "react-icons/fa";
 import { SidebarWrapper, SidebarMenu } from "./SidebarStyles";
 
 const Sidebar = ({ children, parentChildren, currentPage, parent }) => {
@@ -17,7 +17,7 @@ const Sidebar = ({ children, parentChildren, currentPage, parent }) => {
       //page with children
       <Fragment>
         <li className="sidebar-menu-header">
-          <FaServicestack />{" "}
+          <FaReact />{" "}
           <span dangerouslySetInnerHTML={{ __html: currentPage.title }} />
         </li>
         {children.edges.map(child => (
@@ -35,7 +35,7 @@ const Sidebar = ({ children, parentChildren, currentPage, parent }) => {
     return (
       <Fragment>
         <li className="sidebar-menu-header">
-          <FaServicestack />{" "}
+          <FaReact />{" "}
           <span dangerouslySetInnerHTML={{ __html: parent.title }} />
         </li>
         {parentChildren.edges.map(child => (

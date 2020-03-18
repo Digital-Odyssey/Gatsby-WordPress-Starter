@@ -29,10 +29,16 @@ export const NewPostArticleDetails = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   padding: 10px 0 0;
+  font-size: 0.9rem;
 
   a {
+    color: black;
     font-weight: bold;
-    font-family: "Open sans";
+    font-family: "Montserrat";
+  }
+
+  a:hover {
+    color: #999;
   }
 
   img {
@@ -54,7 +60,7 @@ export const SmallText = styled.p`
 `;
 
 export const ReadMoreBtn = styled.a`
-  background-color: blue;
+  background-color: #ffb400;
   color: white !important;
   border-radius: 6px;
   padding: 0.5rem 1rem;
@@ -65,6 +71,6 @@ export const ReadMoreBtn = styled.a`
   transition: all 0.3s;
 
   :hover {
-    background-color: black;
+    background-color: #ff9600;
   }
 `;

@@ -2,13 +2,22 @@ import styled from "styled-components";
 
 export const HeaderTitle = styled.div`
   color: white;
-  font-size: 30px;
+  font-size: 1.8rem;
   position: relative;
   font-family: "Open sans";
   display: inline-block;
   z-index: 2;
   padding: 5px 18px;
   top: 100px;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    text-align: center;
+  }
 
   ::after {
     content: "";

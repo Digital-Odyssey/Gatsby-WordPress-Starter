@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Img from "gatsby-image";
 
 import {
   StyledImg,
@@ -17,8 +18,8 @@ const NewsPost = ({ post }) => {
           fluid={post.node.featured_media.localFile.childImageSharp.fluid}
         />
         <NewPostArticleDetails>
-          <img
-            src={post.node.author.avatar_urls.wordpress_96}
+          <Img
+            fluid={post.node.author.avatar_urls.wordpress_96}
             alt={post.node.author.name}
           />
           <div>

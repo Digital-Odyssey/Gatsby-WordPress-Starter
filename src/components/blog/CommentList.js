@@ -40,8 +40,8 @@ const CommentList = ({ postId }) => {
           // Display the comment list.
           <div className="comment-list">
             <h3>Recent Comments</h3>
-            {data.comments.nodes.map(comment => (
-              <div className="comment">
+            {data.comments.nodes.map((comment, index) => (
+              <div key={index} className="comment">
                 <div className="comment-author">
                   <a href={comment.author.url} rel="noopener noreferrer">
                     {comment.author.name}

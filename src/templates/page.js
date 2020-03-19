@@ -11,32 +11,32 @@ const PageContent = styled.article`
   margin: 20px 0 0 0;
 `;
 
-const Page = ({ data }) => {
+const Page = ({ data: { currentPage, parentChildren, parent, children } }) => {
   return (
     <Layout>
-      <SEO title={data.currentPage.title} />
-      {data.currentPage.featured_media ? (
+      <SEO title={currentPage.title} />
+      {currentPage.featured_media ? (
         <PageHero
-          img={data.currentPage.acf.page_hero_img.source_url}
-          title={data.currentPage.title}
+          img={currentPage.acf.page_hero_img.source_url}
+          title={currentPage.title}
         />
       ) : null}
-      <Breadcrumbs parent={data.parent} />
+      <Breadcrumbs parent={parent} />
       <div className="container">
         <div className="row" style={{ marginBottom: "40px" }}>
           <div className="col-lg-3">
             <Sidebar
-              parentChildren={data.parentChildren}
-              currentPage={data.currentPage}
-              parent={data.parent}
+              parentChildren={parentChildren}
+              currentPage={currentPage}
+              parent={parent}
             >
-              {data.children}
+              {children}
             </Sidebar>
           </div>
 
           <PageContent className="col-lg-9">
-            <h1 dangerouslySetInnerHTML={{ __html: data.currentPage.title }} />
-            <p dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
+            <h1 dangerouslySetInnerHTML={{ __html: currentPage.title }} />
+            <p dangerouslySetInnerHTML={{ __html: currentPage.content }} />
           </PageContent>
         </div>
       </div>

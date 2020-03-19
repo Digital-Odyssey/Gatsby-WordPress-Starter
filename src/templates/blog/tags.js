@@ -7,16 +7,16 @@ import { BlogPost } from "../../components/blog";
 import { PageHero } from "../../components/global/pagehero";
 import PropTypes from "prop-types";
 
-const Tags = ({ data, pageContext }) => {
+const Tags = ({ data: { tagHeroImage }, pageContext }) => {
   const { tagSlug, humanPageNumber, numberOfPages } = pageContext;
   const { allWordpressPost } = data;
   return (
     <>
       <Layout>
         <SEO title="Tags" />
-        {data.tagHeroImage.source_url !== "" ? (
+        {tagHeroImage.source_url !== "" ? (
           <PageHero
-            img={data.tagHeroImage.source_url}
+            img={tagHeroImage.source_url}
             title={`Posts tagged in "${pageContext.tagName}"`}
           />
         ) : null}

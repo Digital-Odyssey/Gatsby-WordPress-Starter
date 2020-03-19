@@ -7,7 +7,7 @@ import Layout from "../../components/layout";
 import { PageHero } from "../../components/global/pagehero";
 import PropTypes from "prop-types";
 
-const Archive = ({ data, pageContext }) => {
+const Archive = ({ data: { archiveHeroImage }, pageContext }) => {
   const { catSlug, humanPageNumber, numberOfPages } = pageContext;
   const { allWordpressPost } = data;
 
@@ -15,9 +15,9 @@ const Archive = ({ data, pageContext }) => {
     <>
       <Layout>
         <SEO title="Archive" />
-        {data.archiveHeroImage.source_url !== "" ? (
+        {archiveHeroImage.source_url !== "" ? (
           <PageHero
-            img={data.archiveHeroImage.source_url}
+            img={archiveHeroImage.source_url}
             title={`Posts archived in "${pageContext.catName}"`}
           />
         ) : null}

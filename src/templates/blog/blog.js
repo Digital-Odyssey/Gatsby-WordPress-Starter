@@ -8,12 +8,12 @@ import { PageHero } from "../../components/global/pagehero";
 import { GlobalSidebar } from "../../components/global/sidebar";
 import PropTypes from "prop-types";
 
-const Blog = ({ data, pageContext }) => {
+const Blog = ({ data: { blogHeroImage, widgets }, pageContext }) => {
   return (
     <Layout>
       <SEO title="Blog" />
-      {data.blogHeroImage.source_url !== "" ? (
-        <PageHero img={data.blogHeroImage.source_url} title={"Blog"} />
+      {blogHeroImage.source_url !== "" ? (
+        <PageHero img={blogHeroImage.source_url} title={"Blog"} />
       ) : null}
       <div className="container body">
         <div className="row">
@@ -25,7 +25,7 @@ const Blog = ({ data, pageContext }) => {
           </div>
           <div className="col-lg-3">
             <div className="sticky">
-              <GlobalSidebar widgets={data.widgets} />
+              <GlobalSidebar widgets={widgets} />
             </div>
           </div>
         </div>

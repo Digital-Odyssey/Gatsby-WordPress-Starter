@@ -7,15 +7,15 @@ import { PortfolioItems } from "../../components/portfolio";
 import { PageHero } from "../../components/global/pagehero";
 import { Breadcrumbs } from "../../components/global/breadcrumbs";
 
-const PortfolioTemplate = ({ data, pageContext }) => {
+const PortfolioTemplate = ({ data: { currentPage, parent }, pageContext }) => {
   return (
     <Layout>
       <SEO title={pageContext.title} />
       <PageHero
-        img={data.currentPage.acf.page_hero_img.source_url}
+        img={currentPage.acf.page_hero_img.source_url}
         title={pageContext.title}
       />
-      <Breadcrumbs parent={data.parent} />
+      <Breadcrumbs parent={parent} />
       <PortfolioItems />
     </Layout>
   );

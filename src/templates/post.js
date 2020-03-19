@@ -28,14 +28,14 @@ const PostImg = styled.img`
   width: 100%;
 `;
 
-const Post = ({ data, pageContext }) => {
+const Post = ({ data: { currentPage }, pageContext }) => {
   const { next, prev } = pageContext;
   return (
     <Layout>
       <SEO title={pageContext.title} />
-      {data.currentPage.acf.page_hero_img.source_url !== null ? (
+      {currentPage.acf.page_hero_img.source_url !== null ? (
         <PageHero
-          img={data.currentPage.acf.page_hero_img.source_url}
+          img={currentPage.acf.page_hero_img.source_url}
           title={pageContext.title}
         />
       ) : null}

@@ -17,13 +17,13 @@ const BodyContent = styled.div`
   margin-top: 20px;
 `;
 
-const Portfolio = ({ data, pageContext }) => {
+const Portfolio = ({ data: { currentPage }, pageContext }) => {
   return (
     <Layout>
       <SEO title={pageContext.title} />
-      {data.currentPage.acf.page_hero_img.source_url !== "" ? (
+      {currentPage.acf.page_hero_img.source_url !== "" ? (
         <PageHero
-          img={data.currentPage.acf.page_hero_img.source_url}
+          img={currentPage.acf.page_hero_img.source_url}
           title={pageContext.title}
         />
       ) : null}

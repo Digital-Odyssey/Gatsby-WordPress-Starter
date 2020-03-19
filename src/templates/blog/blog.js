@@ -24,7 +24,9 @@ const Blog = ({ data, pageContext }) => {
             <Pagination pageContext={pageContext} path={"/blog"} />
           </div>
           <div className="col-lg-3">
-            <GlobalSidebar widgets={data.widgets} />
+            <div className="sticky">
+              <GlobalSidebar widgets={data.widgets} />
+            </div>
           </div>
         </div>
       </div>

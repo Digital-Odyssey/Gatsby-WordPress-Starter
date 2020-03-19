@@ -34,7 +34,7 @@ const Header = () => {
   `);
 
   return (
-    <header>
+    <header id="main-header">
       <div className="container">
         <div className="row">
           <div className="col-md-4 header-logo">

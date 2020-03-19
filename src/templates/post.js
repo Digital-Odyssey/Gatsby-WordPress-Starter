@@ -4,7 +4,6 @@ import SEO from "../components/seo";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 import { PageHero } from "../components/global/pagehero";
-import { CommentList } from "../components/blog";
 
 const LinksWrapper = styled.div`
   display: flex;
@@ -92,13 +91,6 @@ const Post = ({ data, pageContext }) => {
                 </LinkBtn>
               )}
             </LinksWrapper>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <CommentList postId={pageContext.wpId} />
           </div>
         </div>
       </div>

@@ -7,9 +7,11 @@ import Layout from "../../components/layout";
 import { PageHero } from "../../components/global/pagehero";
 import PropTypes from "prop-types";
 
-const Archive = ({ data: { archiveHeroImage }, pageContext }) => {
+const Archive = ({
+  data: { archiveHeroImage, allWordpressPost },
+  pageContext,
+}) => {
   const { catSlug, humanPageNumber, numberOfPages } = pageContext;
-  const { allWordpressPost } = data;
 
   return (
     <>

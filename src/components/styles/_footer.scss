@@ -48,6 +48,7 @@
   right: -80px;
   border: none;
   transition: all 0.3s;
+  z-index: 1000;
 
   &:hover {
     background-color: black;

@@ -25,47 +25,40 @@ const commentQuery = gql`
   }
 `;
 
-// Main component class.
-class CommentList extends React.Component {
-  // Render stuff.
-  render() {
-    const postId = this.props.postId;
+const CommentList = ({ postId }) => {
+  return (
+    <Query query={commentQuery} variables={{ postId }}>
+      {({ loading, error, data }) => {
+        // Loading and error messages.
+        if (loading) return "Loading comments...";
+        if (error) return "Error loading comments...";
 
-    return (
-      // Wrap the comment list in our query.
-      <Query query={commentQuery} variables={{ postId }}>
-        {({ loading, error, data }) => {
-          // Loading and error messages.
-          if (loading) return "Loading comments...";
-          if (error) return "Error loading comments...";
+        // Display message if there are no comments to show.
+        if (data.comments.nodes.length < 1) return "No comments found.";
 
-          // Display message if there are no comments to show.
-          if (data.comments.nodes.length < 1)
-            return "This post does not have any comments.";
-
-          return (
-            // Display the comment list.
-            <div className="comment-list">
-              {data.comments.nodes.map(comment => (
-                <div className="comment">
-                  <div className="comment-author">
-                    <a href={comment.author.url} rel="noopener noreferrer">
-                      {comment.author.name}
-                    </a>{" "}
-                    says:
-                  </div>
-                  <div
-                    className="comment-content"
-                    dangerouslySetInnerHTML={{ __html: comment.content }}
-                  />
+        return (
+          // Display the comment list.
+          <div className="comment-list">
+            <h3>Recent Comments</h3>
+            {data.comments.nodes.map(comment => (
+              <div className="comment">
+                <div className="comment-author">
+                  <a href={comment.author.url} rel="noopener noreferrer">
+                    {comment.author.name}
+                  </a>{" "}
+                  says:
                 </div>
-              ))}
-            </div>
-          );
-        }}
-      </Query>
-    );
-  }
-}
+                <div
+                  className="comment-content"
+                  dangerouslySetInnerHTML={{ __html: comment.content }}
+                />
+              </div>
+            ))}
+          </div>
+        );
+      }}
+    </Query>
+  );
+};
 
 export default CommentList;

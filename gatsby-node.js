@@ -343,6 +343,7 @@ exports.createPages = async ({ graphql, actions }) => {
         author: node.author,
         pathSlug: node.slug,
         source_url: node.featured_media.source_url,
+        wpId: node.wordpress_id,
         prev: index === 0 ? null : posts[index - 1].node,
         next: index === posts.length - 1 ? null : posts[index + 1].node,
       },

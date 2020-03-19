@@ -9,10 +9,8 @@ import PropTypes from "prop-types";
 
 const Archive = ({
   data: { archiveHeroImage, allWordpressPost },
-  pageContext,
+  pageContext: { catSlug, catName, humanPageNumber, numberOfPages },
 }) => {
-  const { catSlug, humanPageNumber, numberOfPages } = pageContext;
-
   return (
     <>
       <Layout>
@@ -20,7 +18,7 @@ const Archive = ({
         {archiveHeroImage.source_url !== "" ? (
           <PageHero
             img={archiveHeroImage.source_url}
-            title={`Posts archived in "${pageContext.catName}"`}
+            title={`Posts archived in "${catName}"`}
           />
         ) : null}
         <div className="container body">

@@ -7,9 +7,10 @@ import { BlogPost } from "../../components/blog";
 import { PageHero } from "../../components/global/pagehero";
 import PropTypes from "prop-types";
 
-const Tags = ({ data: { tagHeroImage }, pageContext }) => {
-  const { tagSlug, humanPageNumber, numberOfPages } = pageContext;
-  const { allWordpressPost } = data;
+const Tags = ({
+  data: { tagHeroImage, allWordpressPost },
+  pageContext: { tagSlug, tagName, humanPageNumber, numberOfPages },
+}) => {
   return (
     <>
       <Layout>
@@ -17,7 +18,7 @@ const Tags = ({ data: { tagHeroImage }, pageContext }) => {
         {tagHeroImage.source_url !== "" ? (
           <PageHero
             img={tagHeroImage.source_url}
-            title={`Posts tagged in "${pageContext.tagName}"`}
+            title={`Posts tagged in "${tagName}"`}
           />
         ) : null}
         <div className="container body">

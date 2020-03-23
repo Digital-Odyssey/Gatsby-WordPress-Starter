@@ -16,7 +16,6 @@ const Footer = ({ widgets }) => {
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 20;
-      console.log("scrolling");
       if (isScrolled !== scrolled) {
         setScrolled(!scrolled);
       }
